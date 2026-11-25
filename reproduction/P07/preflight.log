@@ -1,0 +1,52 @@
+Project HEAD: a664f6dbfcd5e724d496026e71de995a096fa742
+git log --all --name-only --format= | Select-String -Pattern p02|rogue : no matching paths
+git ls-remote https://github.com/columbia/rogueone.git HEAD
+d92d7de0eedb5754dc4d41b426d45a83715c0bd1	HEAD
+git version 2.50.1.windows.1
+v24.15.0
+Python 3.10.9
+GET https://raw.githubusercontent.com/columbia/rogueone/d92d7de0eedb5754dc4d41b426d45a83715c0bd1/readme.md : OK
+GET https://raw.githubusercontent.com/columbia/rogueone/d92d7de0eedb5754dc4d41b426d45a83715c0bd1/DockerReadme.md : OK
+GET https://raw.githubusercontent.com/columbia/rogueone/d92d7de0eedb5754dc4d41b426d45a83715c0bd1/dockerfile : OK
+GET https://raw.githubusercontent.com/columbia/rogueone/d92d7de0eedb5754dc4d41b426d45a83715c0bd1/fast/install.sh : OK
+GET https://raw.githubusercontent.com/columbia/rogueone/d92d7de0eedb5754dc4d41b426d45a83715c0bd1/fast/requirements.txt : OK
+func_timeout~=4.3.5
+networkx~=2.4
+sty~=1.0.0rc0
+z3-solver~=4.8.8.0
+tqdm~=4.48.2
+calmjs.parse~=1.3.0
+pytest~=7.2.1
+requests~=2.31.0
+flask~=2.2.3
+Flask-SQLAlchemy~=3.0.3
+sqlalchemy~=2.0.3
+psycopg2-binary~=2.9.5
+celery~=5.3.1
+simplejson~=3.19.1
+redis~=5.0.1
+psutil~=5.9.7
+alembic~=1.11.1
+GET https://raw.githubusercontent.com/columbia/rogueone/d92d7de0eedb5754dc4d41b426d45a83715c0bd1/fast/esprima-csv/package.json : OK
+{
+  "name": "esprima-csv",
+  "version": "0.12.2",
+  "description": "A tool that generates JavaScript AST as CSVs",
+  "main": "main.js",
+  "dependencies": {
+    "@teppeis/closure-gun": "^2.0.0",
+    "ansicolor": "^1.1.84",
+    "commander": "^3.0.2",
+    "diff2html-cli": "^5.2.9",
+    "espree": "^9.4.1",
+    "esprima": "^4.0.1",
+    "npm-check-updates": "^16.14.4",
+    "npm-remote-ls": "^1.3.2"
+  },
+  "scripts": {
+    "test": "node ./main.js test1.js"
+  },
+  "author": "",
+  "license": "UNLICENSED"
+}
+
