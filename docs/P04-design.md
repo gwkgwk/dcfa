@@ -24,3 +24,7 @@
 ## 接口与验收
 
 build_graph(S, B) 返回 p04.1 JSON 对象。validate_graph(G) 检查输入及由证据契约允许的完整投影；JSON 和 DOT 导出前均校验。dcfa graph SCS.json [--bindings FILE] [--format json|dot] 输出到 stdout。有效部分图仍可导出，SCS 状态保留；错误输入退出非零。DOT 以实线显示静态结构、虚线显示推断，展示未知项。采用合成夹具对照正反例：相同名称／类型、不同原文锚点不得产生数据流；工具无显式绑定不得推断；端点、依据、确定性或状态被篡改应拒绝。运行前置测试。
+
+### 程序调用之间的局部值流
+
+为检验程序操作之间的流，增加一个可证伪的局部规则。若同一单行表达式或语句的 AST 中调用 c 直接占据调用 p 的一个位置参数／关键字值槽 j，且该行全部调用按 P03 顺序、名称与实参源码能一一对应 SCS 调用记录，则加入 c → operand(p,j) 的 result_to_operand 可能边。依据是 Call.args / keyword.value 的父子关系及实参求值语义。此边以两端调用成功求值为条件。对分行、动态目标、不可重解析、数量或实参不符的行关闭此规则并记录未知。重复使用同名变量不会产生跨语句边。[Python 调用表达式](https://docs.python.org/3.10/reference/expressions.html#calls)
