@@ -22,19 +22,31 @@
 - tests/conftest.py 登记合成目录；tests/fixtures/synthetic/scs-demo 内含 SKILL.md、scripts/format.py、resources/layout.txt。tests/unit/test_skill_reader.py 和 test_scs.py 验证读取、解析、证据、异常、Schema 和 CLI。
 - docs/P03-design.md、本文与 examples/p03-scs.json 分别保存设计、验收与实际输出。
 
-## 实测
+## p03.2 实测与状态契约
+
+本表记录第二轮修复时对提交 `da4ff57` 的复测。开发环境安装入口为 `python scripts/install_dev.py`。以下测试使用已有的项目虚拟环境。首次干净安装及 wheel 归档核验见[第一轮修复记录](../reviews/P03_review_response.md)。
 
 | 环境或入口 | 命令或核验 | 结果 |
 |---|---|---|
-| Windows，Python 3.10.9 | python -m pytest -q | 30 passed in 0.68s |
-| Windows，Python 3.14.0a5，纯 Python 版 PyYAML | python -m pytest -q | 30 passed in 0.59s |
+| Windows，Python 3.10.9 | python -m pytest -q | 53 passed in 0.96s |
+| Windows，Python 3.14.0a5，纯 Python 版 PyYAML | python -m pytest -q | 53 passed in 1.11s |
 | Ruff | ruff check . / ruff format --check . | 检查及格式通过 |
-| 构建 | python -m pip wheel --no-build-isolation --no-deps . -w 临时目录 | 构建成功，归档含 dcfa/scs.schema.json |
 | 安装入口 | dcfa scs tests/fixtures/synthetic/scs-demo | 退出 1，partial。JSON 与保存的独立样例逐字段一致 |
 
 首次在 3.14 早期预览解释器上导入原生依赖时出现访问冲突。最终方案使用 fastjsonschema 2.22.3；该预览环境的 PyYAML 6.0.4 使用纯 Python 构建。稳定版 3.10.9 的独立虚拟环境使用常规安装验证。
 
-示例保留 4 个端口主张、1 个效果、3 个操作、1 项上下文暴露、1 项信任边界及 3 条未知诊断。声明端口与自然语言端口分别带证据；这些数值是主张条数，未做实体合并。没有以测试集设计能力类别。
+独立样例的 `schema_version` 为 `p03.2`。3 个文件产生 4 条端口主张、1 个效果、3 个操作、1 项上下文暴露和 1 项信任边界。4 条未知诊断分别对应 SKILL.md 第 16 行的标题、第 19 行的正文（均为 uninterpreted_instruction）、scripts/format.py 的 runtime_semantics_unresolved，以及 resources/layout.txt 的 inventory_only。
+
+端口的 transfer_source 记录本次传输的起点，trust_origin 记录有证据支持的数据来源。operations.kind 区分指令动作和源码调用表达式；files.processing 记录文件的处理情况。
+
+| status | 可作出的工程判断 | CLI 退出码 |
+|---|---|---|
+| complete | 已检查材料在受支持文法内处理完毕，无诊断 | 0 |
+| partial | 已取得必需文档，存在未知、缺证或解析诊断 | 1 |
+| partial_read | 已取得必需文档，另有读取失败 | 1 |
+| failed | 未取得必需文档，或 CLI 报告内部契约错误 | 1 |
+
+退出码 1 不用于风险统计。`partial` 和 `partial_read` 均不能作为恶意更新标签。
 
 ## 分析边界
 

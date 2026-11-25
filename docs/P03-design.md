@@ -12,6 +12,8 @@ extract(Path) 返回可直接序列化的单个 JSON 对象。dcfa scs DIRECTORY
 
 ## 第二轮审查前的修订契约（p03.2）
 
+标题规则仅覆盖 ATX 标题。Setext 的正文行与下划线按两行独立处理：首行符合指令文法时会产生主张，后续下划线保留未解释诊断。因此 Setext 标题可能造成误提取。二轮合成探针中，传输句后接 `====` 得到 Command 端口及第 2 行诊断，状态为 partial。这项限制适用于当前版本。
+
 先识别围栏与缩进示例，再移除 ATX 标题标记并按原有两种整行英文文法匹配。第一种接受 Read/Accept/Return/Emit 加 Text/URL/Code/Command；第二种接受 Send/Write 加上述类型、from local/workspace、to external/persistent state 和可选授权短语。其余非空行有定位诊断。未闭合围栏定位开栏行。YAML 端口必须有非空类型；已知类型大小写统一，未识别类型保留原值并提示。未知边界属性按键定位。置信分 1.0 只表示语法或声明可直接见证，0.5 表示句式解释。
 
 端口新增 transfer_source 表达当前传输的起点；trust_origin 表达数据的信任来源。上一次保存到本地的第三方数据也可以从本地发送，后者仅在有来源证据时填写。null 表示对应属性缺证。operations 为带 kind 的记录：instruction_action 表示指令动作，call_expression 仅表示源码调用。任意函数定义都不能自动证明 Agent 可调用。按源码位置列举调用。
