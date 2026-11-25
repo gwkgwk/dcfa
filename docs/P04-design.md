@@ -28,3 +28,4 @@ build_graph(S, B) 返回 p04.1 JSON 对象。validate_graph(G) 检查输入及�
 ### 程序调用之间的局部值流
 
 为检验程序操作之间的流，增加一个可证伪的局部规则。若同一单行表达式或语句的 AST 中调用 c 直接占据调用 p 的一个位置参数／关键字值槽 j，且该行全部调用按 P03 顺序、名称与实参源码能一一对应 SCS 调用记录，则加入 c → operand(p,j) 的 result_to_operand 可能边。依据是 Call.args / keyword.value 的父子关系及实参求值语义。此边以两端调用成功求值为条件。对分行、动态目标、不可重解析、数量或实参不符的行关闭此规则并记录未知。重复使用同名变量不会产生跨语句边。[Python 调用表达式](https://docs.python.org/3.10/reference/expressions.html#calls)
+当前子集对含双星号映射展开的父调用保守跳过结果槽关联；表达式文本及原调用点仍保留。

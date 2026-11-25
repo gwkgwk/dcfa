@@ -1,0 +1,579 @@
+{
+  "schema_version": "p04.1",
+  "scs": {
+    "schema_version": "p03.2",
+    "status": "partial",
+    "files": [
+      {
+        "path": "SKILL.md",
+        "role": "skill_document",
+        "processing": "processed"
+      },
+      {
+        "path": "scripts/format.py",
+        "role": "script",
+        "processing": "processed"
+      },
+      {
+        "path": "resources/layout.txt",
+        "role": "resource",
+        "processing": "inventory_only"
+      }
+    ],
+    "ports": [
+      {
+        "direction": "input",
+        "data_type": "Text",
+        "transfer_source": null,
+        "sensitivity": "Private",
+        "trust_origin": "local",
+        "exposure_scope": null,
+        "consumability": null,
+        "evidence": {
+          "path": "SKILL.md",
+          "start_line": 3,
+          "end_line": 6,
+          "snippet": "input:\n  data_type: Text\n  sensitivity: Private\n  trust_origin: local",
+          "method": "frontmatter",
+          "confidence": 1.0
+        }
+      },
+      {
+        "direction": "output",
+        "data_type": "Text",
+        "transfer_source": null,
+        "sensitivity": null,
+        "trust_origin": null,
+        "exposure_scope": null,
+        "consumability": null,
+        "evidence": {
+          "path": "SKILL.md",
+          "start_line": 7,
+          "end_line": 7,
+          "snippet": "output: Text",
+          "method": "frontmatter",
+          "confidence": 1.0
+        }
+      },
+      {
+        "direction": "input",
+        "data_type": "Text",
+        "transfer_source": null,
+        "sensitivity": null,
+        "trust_origin": null,
+        "exposure_scope": null,
+        "consumability": null,
+        "evidence": {
+          "path": "SKILL.md",
+          "start_line": 17,
+          "end_line": 17,
+          "snippet": "Accept text.",
+          "method": "instruction",
+          "confidence": 0.5
+        }
+      },
+      {
+        "direction": "output",
+        "data_type": "Text",
+        "transfer_source": null,
+        "sensitivity": null,
+        "trust_origin": null,
+        "exposure_scope": null,
+        "consumability": null,
+        "evidence": {
+          "path": "SKILL.md",
+          "start_line": 18,
+          "end_line": 18,
+          "snippet": "Return text.",
+          "method": "instruction",
+          "confidence": 0.5
+        }
+      }
+    ],
+    "effects": [
+      {
+        "name": "persistent-state write",
+        "preserves_sensitivity": null,
+        "crosses_boundary": null,
+        "requires_authorization": true,
+        "evidence": {
+          "path": "SKILL.md",
+          "start_line": 8,
+          "end_line": 10,
+          "snippet": "effect:\n  name: persistent-state write\n  requires_authorization: true",
+          "method": "frontmatter",
+          "confidence": 1.0
+        }
+      }
+    ],
+    "operations": [
+      {
+        "name": "accept",
+        "parameters": null,
+        "kind": "instruction_action",
+        "evidence": {
+          "path": "SKILL.md",
+          "start_line": 17,
+          "end_line": 17,
+          "snippet": "Accept text.",
+          "method": "instruction",
+          "confidence": 0.5
+        }
+      },
+      {
+        "name": "return",
+        "parameters": null,
+        "kind": "instruction_action",
+        "evidence": {
+          "path": "SKILL.md",
+          "start_line": 18,
+          "end_line": 18,
+          "snippet": "Return text.",
+          "method": "instruction",
+          "confidence": 0.5
+        }
+      },
+      {
+        "name": "value.strip",
+        "parameters": [],
+        "kind": "call_expression",
+        "evidence": {
+          "path": "scripts/format.py",
+          "start_line": 2,
+          "end_line": 2,
+          "snippet": "    return value.strip()",
+          "method": "python_ast",
+          "confidence": 1.0
+        }
+      }
+    ],
+    "context_exposure": [
+      {
+        "scope": "workspace",
+        "evidence": {
+          "path": "SKILL.md",
+          "start_line": 11,
+          "end_line": 11,
+          "snippet": "context_exposure: workspace",
+          "method": "frontmatter",
+          "confidence": 1.0
+        }
+      }
+    ],
+    "trust_boundaries": [
+      {
+        "source": "local",
+        "destination": "persistent state",
+        "evidence": {
+          "path": "SKILL.md",
+          "start_line": 12,
+          "end_line": 14,
+          "snippet": "trust_boundary:\n  source: local\n  destination: persistent state",
+          "method": "frontmatter",
+          "confidence": 1.0
+        }
+      }
+    ],
+    "diagnostics": [
+      {
+        "state": "unknown",
+        "reason": "uninterpreted_instruction",
+        "path": "SKILL.md",
+        "line": 16
+      },
+      {
+        "state": "unknown",
+        "reason": "uninterpreted_instruction",
+        "path": "SKILL.md",
+        "line": 19
+      },
+      {
+        "state": "unknown",
+        "reason": "runtime_semantics_unresolved",
+        "path": "scripts/format.py",
+        "line": null
+      },
+      {
+        "state": "unknown",
+        "reason": "inventory_only",
+        "path": "resources/layout.txt",
+        "line": null
+      }
+    ]
+  },
+  "bindings": [],
+  "nodes": [
+    {
+      "id": "skill",
+      "kind": "skill",
+      "label": "Skill",
+      "evidence": "/scs"
+    },
+    {
+      "id": "/scs/files/0",
+      "kind": "file",
+      "label": "SKILL.md",
+      "evidence": "/scs/files/0"
+    },
+    {
+      "id": "/scs/files/1",
+      "kind": "file",
+      "label": "scripts/format.py",
+      "evidence": "/scs/files/1"
+    },
+    {
+      "id": "/scs/files/2",
+      "kind": "resource",
+      "label": "resources/layout.txt",
+      "evidence": "/scs/files/2"
+    },
+    {
+      "id": "/scs/ports/0",
+      "kind": "input_port",
+      "label": "Text",
+      "evidence": "/scs/ports/0"
+    },
+    {
+      "id": "/scs/ports/1",
+      "kind": "output_port",
+      "label": "Text",
+      "evidence": "/scs/ports/1"
+    },
+    {
+      "id": "/scs/ports/2",
+      "kind": "input_port",
+      "label": "Text",
+      "evidence": "/scs/ports/2"
+    },
+    {
+      "id": "/scs/ports/3",
+      "kind": "output_port",
+      "label": "Text",
+      "evidence": "/scs/ports/3"
+    },
+    {
+      "id": "/scs/effects/0",
+      "kind": "effect",
+      "label": "persistent-state write",
+      "evidence": "/scs/effects/0"
+    },
+    {
+      "id": "/scs/operations/0",
+      "kind": "instruction_action",
+      "label": "accept",
+      "evidence": "/scs/operations/0"
+    },
+    {
+      "id": "/scs/operations/0/text",
+      "kind": "instruction",
+      "label": "Accept text.",
+      "evidence": "/scs/operations/0/evidence"
+    },
+    {
+      "id": "/scs/operations/1",
+      "kind": "instruction_action",
+      "label": "return",
+      "evidence": "/scs/operations/1"
+    },
+    {
+      "id": "/scs/operations/1/text",
+      "kind": "instruction",
+      "label": "Return text.",
+      "evidence": "/scs/operations/1/evidence"
+    },
+    {
+      "id": "/scs/operations/2",
+      "kind": "call_expression",
+      "label": "value.strip",
+      "evidence": "/scs/operations/2"
+    },
+    {
+      "id": "/scs/operations/2/receiver",
+      "kind": "data_expression",
+      "label": "value",
+      "evidence": "/scs/operations/2/name"
+    },
+    {
+      "id": "/scs/context_exposure/0",
+      "kind": "context",
+      "label": "workspace",
+      "evidence": "/scs/context_exposure/0"
+    },
+    {
+      "id": "/scs/trust_boundaries/0",
+      "kind": "trust_boundary",
+      "label": "local \u2192 persistent state",
+      "evidence": "/scs/trust_boundaries/0"
+    }
+  ],
+  "edges": [
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/files/0",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/files/0"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/files/1",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/files/1"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/files/2",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/files/2"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/ports/0",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/ports/0"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/ports/1",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/ports/1"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/ports/2",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/ports/2"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/ports/3",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/ports/3"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/effects/0",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/effects/0"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/operations/0",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/operations/0"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/operations/0/text",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/operations/0/evidence"
+      ]
+    },
+    {
+      "source": "/scs/operations/0/text",
+      "relation": "describes",
+      "target": "/scs/operations/0",
+      "certainty": "possible",
+      "evidence": [
+        "/scs/operations/0/evidence",
+        "/scs/operations/0"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/operations/1",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/operations/1"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/operations/1/text",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/operations/1/evidence"
+      ]
+    },
+    {
+      "source": "/scs/operations/1/text",
+      "relation": "describes",
+      "target": "/scs/operations/1",
+      "certainty": "possible",
+      "evidence": [
+        "/scs/operations/1/evidence",
+        "/scs/operations/1"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/operations/2",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/operations/2"
+      ]
+    },
+    {
+      "source": "/scs/operations/2",
+      "relation": "contains",
+      "target": "/scs/operations/2/receiver",
+      "certainty": "static",
+      "evidence": [
+        "/scs/operations/2",
+        "/scs/operations/2/name"
+      ]
+    },
+    {
+      "source": "/scs/operations/2/receiver",
+      "relation": "operand",
+      "target": "/scs/operations/2",
+      "certainty": "static",
+      "evidence": [
+        "/scs/operations/2/name",
+        "/scs/operations/2"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/context_exposure/0",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/context_exposure/0"
+      ]
+    },
+    {
+      "source": "skill",
+      "relation": "contains",
+      "target": "/scs/trust_boundaries/0",
+      "certainty": "static",
+      "evidence": [
+        "/scs",
+        "/scs/trust_boundaries/0"
+      ]
+    },
+    {
+      "source": "/scs/ports/2",
+      "relation": "reads",
+      "target": "/scs/operations/0",
+      "certainty": "possible",
+      "evidence": [
+        "/scs/ports/2",
+        "/scs/operations/0"
+      ]
+    },
+    {
+      "source": "/scs/operations/1",
+      "relation": "produces",
+      "target": "/scs/ports/3",
+      "certainty": "possible",
+      "evidence": [
+        "/scs/operations/1",
+        "/scs/ports/3"
+      ]
+    }
+  ],
+  "unknowns": [
+    {
+      "subject": "/scs/files/2",
+      "reason": "resource_usage_unresolved",
+      "evidence": "/scs/files/2"
+    },
+    {
+      "subject": "/scs/ports/0",
+      "reason": "semantic_link_unresolved",
+      "evidence": "/scs/ports/0"
+    },
+    {
+      "subject": "/scs/ports/1",
+      "reason": "semantic_link_unresolved",
+      "evidence": "/scs/ports/1"
+    },
+    {
+      "subject": "/scs/effects/0",
+      "reason": "semantic_link_unresolved",
+      "evidence": "/scs/effects/0"
+    },
+    {
+      "subject": "/scs/operations/2",
+      "reason": "tool_binding_unresolved",
+      "evidence": "/scs/operations/2"
+    },
+    {
+      "subject": "/scs/context_exposure/0",
+      "reason": "semantic_link_unresolved",
+      "evidence": "/scs/context_exposure/0"
+    },
+    {
+      "subject": "/scs/trust_boundaries/0",
+      "reason": "semantic_link_unresolved",
+      "evidence": "/scs/trust_boundaries/0"
+    },
+    {
+      "subject": "skill",
+      "reason": "uninterpreted_instruction",
+      "evidence": "/scs/diagnostics/0"
+    },
+    {
+      "subject": "skill",
+      "reason": "uninterpreted_instruction",
+      "evidence": "/scs/diagnostics/1"
+    },
+    {
+      "subject": "skill",
+      "reason": "runtime_semantics_unresolved",
+      "evidence": "/scs/diagnostics/2"
+    },
+    {
+      "subject": "skill",
+      "reason": "inventory_only",
+      "evidence": "/scs/diagnostics/3"
+    }
+  ],
+  "runtime_observation": "none"
+}
