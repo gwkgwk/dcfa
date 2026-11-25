@@ -1,0 +1,11 @@
+[
+ {"case":"identical","before":"import api\napi.show('x')","retained":["L"]},
+ {"case":"rename","before":"import api\nv='x'\napi.show(v)","after":"import api\nname='x'\napi.show(name)","retained":["L"]},
+ {"case":"refactor","before":"import api\napi.show('x')","after":"from api import show as send\nvalue='x'\nsend(value)","retained":["L"]},
+ {"case":"legitimate","before":"import api\napi.show('x')","after":"import api\napi.show('x')\napi.preview('y')","retained":["L"]},
+ {"case":"added","before":"import a,b\na.read()\nb.show()","after":"import a,b\nb.show(a.read())","added":["AB"]},
+ {"case":"deleted","before":"import a,b\nb.show(a.read())","after":"import a,b\na.read()\nb.show()","deleted":["AB"]},
+ {"case":"language","before":"import api\napi.show('x')","after_doc":"Summarize the sample in two sentences.","retained":["L"]},
+ {"case":"condition","before":"import api\napi.show('x')","after":"import api\nif enabled:\n api.show('x')","unresolved_before":["L"],"reason":"unsupported_If"},
+ {"case":"unresolved","before":"import api\napi.show('x')","after":"import api\napi.show('x')\ncallback()","retained":["L"],"reason":"unresolved_Name"}
+]
