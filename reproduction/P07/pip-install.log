@@ -1,0 +1,143 @@
+Collecting func_timeout~=4.3.5
+  Downloading func_timeout-4.3.5.tar.gz (44 kB)
+     -------------------------------------- 44.3/44.3 kB 167.6 kB/s eta 0:00:00
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Collecting networkx~=2.4
+  Downloading networkx-2.8.8-py3-none-any.whl (2.0 MB)
+     ---------------------------------------- 2.0/2.0 MB 2.2 MB/s eta 0:00:00
+Collecting sty~=1.0.0rc0
+  Downloading sty-1.0.6-py3-none-any.whl (12 kB)
+Collecting z3-solver~=4.8.8.0
+  Downloading z3_solver-4.8.8.0-py2.py3-none-win_amd64.whl (32.9 MB)
+     ---------------------------------------- 32.9/32.9 MB 8.0 MB/s eta 0:00:00
+Collecting tqdm~=4.48.2
+  Downloading tqdm-4.48.2-py2.py3-none-any.whl (68 kB)
+     -------------------------------------- 68.3/68.3 kB 921.3 kB/s eta 0:00:00
+Collecting calmjs.parse~=1.3.0
+  Downloading calmjs_parse-1.3.4-py3-none-any.whl (297 kB)
+     -------------------------------------- 297.1/297.1 kB 1.4 MB/s eta 0:00:00
+Collecting pytest~=7.2.1
+  Downloading pytest-7.2.2-py3-none-any.whl (317 kB)
+     -------------------------------------- 317.2/317.2 kB 1.8 MB/s eta 0:00:00
+Collecting requests~=2.31.0
+  Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+     ---------------------------------------- 62.6/62.6 kB 1.7 MB/s eta 0:00:00
+Collecting flask~=2.2.3
+  Downloading Flask-2.2.5-py3-none-any.whl (101 kB)
+     ------------------------------------ 101.8/101.8 kB 840.2 kB/s eta 0:00:00
+Collecting Flask-SQLAlchemy~=3.0.3
+  Downloading flask_sqlalchemy-3.0.5-py3-none-any.whl (24 kB)
+Collecting sqlalchemy~=2.0.3
+  Downloading sqlalchemy-2.0.58-cp310-cp310-win_amd64.whl (2.2 MB)
+     ---------------------------------------- 2.2/2.2 MB 4.6 MB/s eta 0:00:00
+Collecting psycopg2-binary~=2.9.5
+  Downloading psycopg2_binary-2.9.13-cp310-cp310-win_amd64.whl (2.8 MB)
+     ---------------------------------------- 2.8/2.8 MB 6.5 MB/s eta 0:00:00
+Collecting celery~=5.3.1
+  Downloading celery-5.3.6-py3-none-any.whl (422 kB)
+     -------------------------------------- 422.0/422.0 kB 3.3 MB/s eta 0:00:00
+Collecting simplejson~=3.19.1
+  Downloading simplejson-3.19.3-cp310-cp310-win_amd64.whl (75 kB)
+     -------------------------------------- 75.6/75.6 kB 838.5 kB/s eta 0:00:00
+Collecting redis~=5.0.1
+  Downloading redis-5.0.8-py3-none-any.whl (255 kB)
+     -------------------------------------- 255.6/255.6 kB 1.4 MB/s eta 0:00:00
+Collecting psutil~=5.9.7
+  Downloading psutil-5.9.8-cp37-abi3-win_amd64.whl (255 kB)
+     -------------------------------------- 255.1/255.1 kB 1.4 MB/s eta 0:00:00
+Collecting alembic~=1.11.1
+  Downloading alembic-1.11.3-py3-none-any.whl (225 kB)
+     -------------------------------------- 225.4/225.4 kB 1.7 MB/s eta 0:00:00
+Requirement already satisfied: setuptools in c:\users\monkey\appdata\local\temp\dcfa-p07-d92d7de\venv\lib\site-packages (from calmjs.parse~=1.3.0->-r C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de/code/fast/requirements.txt (line 6)) (65.5.0)
+Collecting ply>=3.6
+  Downloading ply-3.11-py2.py3-none-any.whl (49 kB)
+     ---------------------------------------- 49.6/49.6 kB 1.2 MB/s eta 0:00:00
+Collecting packaging
+  Using cached packaging-26.4-py3-none-any.whl (140 kB)
+Collecting pluggy<2.0,>=0.12
+  Using cached pluggy-1.7.0-py3-none-any.whl (27 kB)
+Collecting colorama
+  Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Collecting exceptiongroup>=1.0.0rc8
+  Using cached exceptiongroup-1.3.2-py3-none-any.whl (16 kB)
+Collecting attrs>=19.2.0
+  Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+     -------------------------------------- 67.5/67.5 kB 924.3 kB/s eta 0:00:00
+Collecting iniconfig
+  Using cached iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Collecting tomli>=1.0.0
+  Using cached tomli-2.5.0-py3-none-any.whl (14 kB)
+Collecting charset-normalizer<4,>=2
+  Downloading charset_normalizer-3.5.3-cp310-cp310-win_amd64.whl (213 kB)
+     -------------------------------------- 213.4/213.4 kB 1.6 MB/s eta 0:00:00
+Collecting certifi>=2017.4.17
+  Downloading certifi-2026.11.20-py3-none-any.whl (127 kB)
+     -------------------------------------- 127.9/127.9 kB 1.9 MB/s eta 0:00:00
+Collecting idna<4,>=2.5
+  Downloading idna-3.20-py3-none-any.whl (69 kB)
+     ---------------------------------------- 69.6/69.6 kB 1.3 MB/s eta 0:00:00
+Collecting urllib3<3,>=1.21.1
+  Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+     -------------------------------------- 135.7/135.7 kB 1.0 MB/s eta 0:00:00
+Collecting itsdangerous>=2.0
+  Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+Collecting Jinja2>=3.0
+  Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Collecting click>=8.0
+  Downloading click-8.5.1-py3-none-any.whl (126 kB)
+     ------------------------------------ 126.2/126.2 kB 927.4 kB/s eta 0:00:00
+Collecting Werkzeug>=2.2.2
+  Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+     -------------------------------------- 228.7/228.7 kB 1.5 MB/s eta 0:00:00
+Collecting typing-extensions>=4.6.0
+  Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Collecting greenlet>=1
+  Downloading greenlet-3.5.6-cp310-cp310-win_amd64.whl (322 kB)
+     -------------------------------------- 322.9/322.9 kB 1.4 MB/s eta 0:00:00
+Collecting click-didyoumean>=0.3.0
+  Downloading click_didyoumean-0.3.1-py3-none-any.whl (3.6 kB)
+Collecting kombu<6.0,>=5.3.4
+  Downloading kombu-5.7.0-py3-none-any.whl (266 kB)
+     -------------------------------------- 266.6/266.6 kB 1.3 MB/s eta 0:00:00
+Collecting vine<6.0,>=5.1.0
+  Downloading vine-5.1.0-py3-none-any.whl (9.6 kB)
+Collecting click-repl>=0.2.0
+  Downloading click_repl-0.4.1-py3-none-any.whl (14 kB)
+Collecting tzdata>=2022.7
+  Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+     -------------------------------------- 348.2/348.2 kB 1.8 MB/s eta 0:00:00
+Collecting click-plugins>=1.1.1
+  Downloading click_plugins-1.1.1.2-py2.py3-none-any.whl (11 kB)
+Collecting python-dateutil>=2.8.2
+  Downloading python_dateutil-3.0.0-py2.py3-none-any.whl (94 kB)
+     -------------------------------------- 94.7/94.7 kB 767.4 kB/s eta 0:00:00
+Collecting billiard<5.0,>=4.2.0
+  Downloading billiard-4.3.2-py3-none-any.whl (90 kB)
+     -------------------------------------- 90.6/90.6 kB 737.5 kB/s eta 0:00:00
+Collecting async-timeout>=4.0.3
+  Downloading async_timeout-5.0.1-py3-none-any.whl (6.2 kB)
+Collecting Mako
+  Downloading mako-1.4.3-py3-none-any.whl (80 kB)
+     ---------------------------------------- 80.2/80.2 kB 1.1 MB/s eta 0:00:00
+Collecting prompt_toolkit>=3.0.36
+  Downloading prompt_toolkit-3.0.53-py3-none-any.whl (392 kB)
+     -------------------------------------- 392.3/392.3 kB 2.0 MB/s eta 0:00:00
+Collecting MarkupSafe>=2.0
+  Using cached markupsafe-3.0.4-cp310-cp310-win_amd64.whl (14 kB)
+Collecting amqp>=5.4.2
+  Downloading amqp-5.4.2-py3-none-any.whl (51 kB)
+     -------------------------------------- 52.0/52.0 kB 534.8 kB/s eta 0:00:00
+Collecting six>=1.6
+  Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Collecting wcwidth>=0.1.4
+  Downloading wcwidth-0.9.5-cp310-abi3-win_amd64.whl (619 kB)
+     -------------------------------------- 620.0/620.0 kB 2.4 MB/s eta 0:00:00
+Installing collected packages: z3-solver, ply, func_timeout, wcwidth, vine, urllib3, tzdata, typing-extensions, tqdm, tomli, sty, six, simplejson, psycopg2-binary, psutil, pluggy, packaging, networkx, MarkupSafe, itsdangerous, iniconfig, idna, greenlet, colorama, click, charset-normalizer, certifi, calmjs.parse, billiard, attrs, async-timeout, Werkzeug, sqlalchemy, requests, redis, python-dateutil, prompt_toolkit, Mako, Jinja2, exceptiongroup, click-plugins, click-didyoumean, amqp, pytest, kombu, flask, click-repl, alembic, Flask-SQLAlchemy, celery
+  DEPRECATION: func_timeout is being installed using the legacy 'setup.py install' method, because it does not have a 'pyproject.toml' and the 'wheel' package is not installed. pip 23.1 will enforce this behaviour change. A possible replacement is to enable the '--use-pep517' option. Discussion can be found at https://github.com/pypa/pip/issues/8559
+  Running setup.py install for func_timeout: started
+  Running setup.py install for func_timeout: finished with status 'done'
+Successfully installed Flask-SQLAlchemy-3.0.5 Jinja2-3.1.6 Mako-1.4.3 MarkupSafe-3.0.4 Werkzeug-3.1.9 alembic-1.11.3 amqp-5.4.2 async-timeout-5.0.1 attrs-26.1.0 billiard-4.3.2 calmjs.parse-1.3.4 celery-5.3.6 certifi-2026.11.20 charset-normalizer-3.5.3 click-8.5.1 click-didyoumean-0.3.1 click-plugins-1.1.1.2 click-repl-0.4.1 colorama-0.4.6 exceptiongroup-1.3.2 flask-2.2.5 func_timeout-4.3.5 greenlet-3.5.6 idna-3.20 iniconfig-2.3.1 itsdangerous-2.2.0 kombu-5.7.0 networkx-2.8.8 packaging-26.4 pluggy-1.7.0 ply-3.11 prompt_toolkit-3.0.53 psutil-5.9.8 psycopg2-binary-2.9.13 pytest-7.2.2 python-dateutil-3.0.0 redis-5.0.8 requests-2.31.0 simplejson-3.19.3 six-1.17.0 sqlalchemy-2.0.58 sty-1.0.6 tomli-2.5.0 tqdm-4.48.2 typing-extensions-4.16.0 tzdata-2026.6 urllib3-2.8.0 vine-5.1.0 wcwidth-0.9.5 z3-solver-4.8.8.0
+
+[notice] A new release of pip available: 22.3.1 -> 26.3
+[notice] To update, run: C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\venv\Scripts\python.exe -m pip install --upgrade pip

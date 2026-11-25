@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\code\rogue_one_runner.py", line 20, in <module>
+    from fast.dataflow import extraction as ex, trust_domains as td
+  File "C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\code\fast\dataflow\extraction.py", line 3, in <module>
+    from fast.simurun.graph import Graph
+  File "C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\code\fast\simurun\graph.py", line 14, in <module>
+    from .utilities import BranchTag, BranchTagContainer, DictCounter
+  File "C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\code\fast\simurun\utilities.py", line 7, in <module>
+    import celery
+ModuleNotFoundError: No module named 'celery'

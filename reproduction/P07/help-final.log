@@ -1,0 +1,27 @@
+usage: rogue_one_runner.py [-h] [--sample_folder SAMPLE_FOLDER] [--timeouts]
+                           [--no_redo] [--single SINGLE] [--fast]
+                           [--log_level LOG_LEVEL] [--raise_all] [--save_odrg]
+
+Runner for mass parallel analysis.
+
+options:
+  -h, --help            show this help message and exit
+  --sample_folder SAMPLE_FOLDER
+                        A folder containing folders of datasets, each of which
+                        has folders of before/after update pairs. e.g. given S
+                        amples/30_backstabber_samples/pack_0.1--
+                        >pack_0.2/pack_0.1/ as a sample, the argument should
+                        be just Samples, so that the samples are captured by
+                        **/*-->**/
+  --timeouts
+  --no_redo
+  --single SINGLE       A folder containing a single package pair to be
+                        analyzed.
+  --fast                Coarser analysis for post-timeout reanalysis attempt.
+  --log_level LOG_LEVEL
+                        More or less verbose logs: DEBUG, INFO, WARN, ERROR,
+                        FATAL
+  --raise_all
+  --save_odrg           Save the ODRGs built for the before and after versions
+                        of the program. Saves as GraphML in files
+                        <pair_dir>/before.graphml and after.graphml.

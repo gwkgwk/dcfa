@@ -1,0 +1,17 @@
+Starting analysis on pair_dir: C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\pair2
+Logging to package dir (C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\pair2\sample-1.0.0)
+Package analysis finished successfully (C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\pair2\sample-1.0.0)
+Logging to package dir (C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\pair2\sample-1.1.0)
+Package analysis finished successfully (C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\pair2\sample-1.1.0)
+WARNING: No files processed for sample_1.0.0-->1.1.0.  Path may be incorrect. 
+
+AttributeError:'pmem' object has no attribute 'shared'Traceback (most recent call last):
+  File "C:\Users\Monkey\.t3\scratch\2026-11-25-dcfa-1-agent-skill-dcfa-5702034f\reproduction\P07\run_pair.py", line 27, in <module>
+    result = process_package_pair_given_names(
+  File "C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\code\rogue_one_runner.py", line 268, in process_package_pair_given_names
+    raise e
+  File "C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\code\rogue_one_runner.py", line 261, in process_package_pair_given_names
+    'mem_info': mem_info(),
+  File "C:\Users\Monkey\AppData\Local\Temp\dcfa-p07-d92d7de\code\rogue_one_runner.py", line 322, in mem_info
+    'shared': pm.shared,
+AttributeError: 'pmem' object has no attribute 'shared'

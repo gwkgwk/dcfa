@@ -1,0 +1,29 @@
+{
+  "before": {
+    "file_node_nums": {},
+    "objects": 586,
+    "edges": 491,
+    "trust_domains": [],
+    "relations": []
+  },
+  "after": {
+    "file_node_nums": {},
+    "objects": 834,
+    "edges": 1363,
+    "trust_domains": [
+      ":dyn:both:Function",
+      ":dyn:eval",
+      ":dyn:require",
+      ":encoding",
+      ":local:1",
+      ":local:path",
+      ":sys:frontend:document",
+      "path",
+      "process",
+      "process.argv",
+      "process.env"
+    ],
+    "relations": []
+  },
+  "flagged_single_local_rels_from_tuples": []
+}

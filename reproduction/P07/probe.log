@@ -1,0 +1,8 @@
+Logging to package dir (C:/Users/Monkey/AppData/Local/Temp/dcfa-p07-d92d7de/pair2/sample-1.0.0) 
+
+Package analysis finished successfully (C:/Users/Monkey/AppData/Local/Temp/dcfa-p07-d92d7de/pair2/sample-1.0.0) 
+
+Traceback (most recent call last):
+  File "C:\Users\Monkey\.t3\scratch\2026-11-25-dcfa-1-agent-skill-dcfa-5702034f\reproduction\P07\probe_modules.py", line 20, in <module>
+    raise RuntimeError("No source files processed")
+RuntimeError: No source files processed
