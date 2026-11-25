@@ -9,3 +9,11 @@ extract(Path) 返回可直接序列化的单个 JSON 对象。dcfa scs DIRECTORY
 对应 P01 和原文 §II-A、§III-B、图 4：提取 YAML 声明、自然语言指令、脚本静态操作。初版选取显式标注的英文端口／效果声明、有限的英文指令式表达和 Python 调用语法作为可检验子集，资源文件按格式或目录角色登记。规则、序列化、预算、失败状态和 AST 后端均属重实现选择。Python 调用只证明代码中出现调用表达式，不能据此证明运行时绑定、可达性或授权。§III-E2 的 LLM 用于跨 Skill 链审计，P03 无对应任务，不配置模型和 Prompt。
 
 独立验证读取边界、文件识别、三种提取途径、证据行号、未知及失败、Schema 拒绝非法结构和 CLI 输出。合成输入须能从仓库重建独立 SCS JSON。只评价工程契约，不从这些测试推断召回率。
+
+## 第二轮审查前的修订契约（p03.2）
+
+先识别围栏与缩进示例，再移除 ATX 标题标记并按原有两种整行英文文法匹配。第一种接受 Read/Accept/Return/Emit 加 Text/URL/Code/Command；第二种接受 Send/Write 加上述类型、from local/workspace、to external/persistent state 和可选授权短语。其余非空行有定位诊断。未闭合围栏定位开栏行。YAML 端口必须有非空类型；已知类型大小写统一，未识别类型保留原值并提示。未知边界属性按键定位。置信分 1.0 只表示语法或声明可直接见证，0.5 表示句式解释。
+
+端口新增 transfer_source 表达当前传输的起点；trust_origin 表达数据的信任来源。上一次保存到本地的第三方数据也可以从本地发送，后者仅在有来源证据时填写。null 表示对应属性缺证。operations 为带 kind 的记录：instruction_action 表示指令动作，call_expression 仅表示源码调用。任意函数定义都不能自动证明 Agent 可调用。按源码位置列举调用。
+
+条目耗尽如实报告中断；ADS 仅检查是否有命名流，不读取其内容。文件 role 与 processing 分离。failed 表示必需文档未取得，partial_read 表示取得文档但有读取缺口，partial 表示其他诊断，complete 表示已处理材料在支持文法内无诊断。所有非 complete 退出 1，仅供工程控制。封闭范围限于受支持的语法和已检查材料。验证器进程内复用，CLI 在内部契约失效时输出失败 JSON。稳定解释器常规安装，Windows 3.14.0a5 用仓库安装入口在安装前选择纯 Python YAML。合成反例、旧套件及干净安装分别验证；既有测试保留。
