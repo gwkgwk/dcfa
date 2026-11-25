@@ -1,0 +1,234 @@
+{
+  "N1": [
+    {
+      "scs": [
+        "instruction_action:accept",
+        "port:input:Text"
+      ],
+      "edges": [
+        "input_port:Text|reads|instruction_action:accept|possible",
+        "instruction:Accept text.|describes|instruction_action:accept|possible"
+      ],
+      "capability_nodes": [
+        "input_port:Text",
+        "instruction_action:accept"
+      ],
+      "runtime": "none"
+    }
+  ],
+  "P1": [
+    {
+      "scs": [
+        "call_expression:polish"
+      ],
+      "edges": [
+        "data_expression:item|operand|call_expression:polish|static"
+      ],
+      "capability_nodes": [
+        "call_expression:polish"
+      ],
+      "runtime": "none",
+      "arguments": [
+        [
+          "item"
+        ]
+      ]
+    }
+  ],
+  "T1": [
+    {
+      "scs": [
+        "call_expression:stamp"
+      ],
+      "edges": [
+        "call_expression:stamp|may_invoke|tool:mock-stamp|possible"
+      ],
+      "capability_nodes": [
+        "call_expression:stamp"
+      ],
+      "runtime": "none"
+    }
+  ],
+  "T2": [
+    {
+      "scs": [
+        "call_expression:stamp"
+      ],
+      "edges": [],
+      "capability_nodes": [
+        "call_expression:stamp"
+      ],
+      "runtime": "none",
+      "unknown": [
+        "no_claim_context_exposure",
+        "no_claim_effects",
+        "no_claim_ports",
+        "no_claim_trust_boundaries",
+        "runtime_semantics_unresolved",
+        "tool_binding_unresolved"
+      ]
+    }
+  ],
+  "D1": [
+    {
+      "scs": [
+        "call_expression:make",
+        "call_expression:wrap"
+      ],
+      "edges": [
+        "call_expression:make|result_to_operand|data_expression:make()|possible",
+        "data_expression:make()|operand|call_expression:wrap|static"
+      ],
+      "capability_nodes": [
+        "call_expression:make",
+        "call_expression:wrap"
+      ],
+      "runtime": "none"
+    }
+  ],
+  "D2": [
+    {
+      "scs": [
+        "call_expression:make",
+        "call_expression:wrap"
+      ],
+      "edges": [
+        "data_expression:v|operand|call_expression:wrap|static"
+      ],
+      "capability_nodes": [
+        "call_expression:make",
+        "call_expression:wrap"
+      ],
+      "runtime": "none",
+      "all_node_kinds": [
+        "call_expression",
+        "data_expression",
+        "file",
+        "skill"
+      ]
+    }
+  ],
+  "C1": [
+    {
+      "scs": [
+        "call_expression:stamp"
+      ],
+      "edges": [],
+      "capability_nodes": [
+        "call_expression:stamp"
+      ],
+      "runtime": "none",
+      "all_node_kinds": [
+        "call_expression",
+        "file",
+        "skill"
+      ]
+    }
+  ],
+  "C2": [
+    {
+      "scs": [
+        "effect:write"
+      ],
+      "edges": [],
+      "capability_nodes": [
+        "effect:write"
+      ],
+      "runtime": "none",
+      "authorization": true
+    }
+  ],
+  "E1": [
+    {
+      "scs": [
+        "boundary:local\u2192external",
+        "context:external",
+        "effect:send",
+        "instruction_action:send",
+        "port:output:URL"
+      ],
+      "edges": [
+        "instruction:Send URL from local to external.|describes|instruction_action:send|possible",
+        "instruction_action:send|crosses-boundary|trust_boundary:local \u2192 external|possible",
+        "instruction_action:send|exposes|context:external|possible",
+        "instruction_action:send|may_cause|effect:send|possible",
+        "instruction_action:send|produces|output_port:URL|possible"
+      ],
+      "capability_nodes": [
+        "context:external",
+        "effect:send",
+        "instruction_action:send",
+        "output_port:URL",
+        "trust_boundary:local \u2192 external"
+      ],
+      "runtime": "none"
+    }
+  ],
+  "M1": [
+    {
+      "scs": [
+        "call_expression:stamp"
+      ],
+      "edges": [
+        "call_expression:stamp|may_invoke|tool:mock-stamp|possible"
+      ],
+      "capability_nodes": [
+        "call_expression:stamp"
+      ],
+      "runtime": "none",
+      "sourceFiles": [
+        "analyst/bindings.json",
+        "skill/logic.py"
+      ],
+      "mapping": "verified"
+    }
+  ],
+  "U1": [
+    {
+      "scs": [],
+      "edges": [],
+      "capability_nodes": [],
+      "runtime": "none",
+      "unknown": [
+        "no_claim_context_exposure",
+        "no_claim_effects",
+        "no_claim_operations",
+        "no_claim_ports",
+        "no_claim_trust_boundaries",
+        "uninterpreted_instruction"
+      ]
+    }
+  ],
+  "S1": [
+    {
+      "scs": [
+        "instruction_action:accept",
+        "port:input:Text"
+      ],
+      "edges": [
+        "input_port:Text|reads|instruction_action:accept|possible",
+        "instruction:Accept text.|describes|instruction_action:accept|possible"
+      ],
+      "capability_nodes": [
+        "input_port:Text",
+        "instruction_action:accept"
+      ],
+      "runtime": "none"
+    },
+    {
+      "scs": [
+        "instruction_action:accept",
+        "port:input:Text"
+      ],
+      "edges": [
+        "input_port:Text|reads|instruction_action:accept|possible",
+        "instruction:Accept text.|describes|instruction_action:accept|possible"
+      ],
+      "capability_nodes": [
+        "input_port:Text",
+        "instruction_action:accept"
+      ],
+      "runtime": "none"
+    }
+  ]
+}
