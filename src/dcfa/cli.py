@@ -1,4 +1,4 @@
-"""Infrastructure-only command line interface."""
+"""DCFA command line interface."""
 
 import argparse
 import json
@@ -13,10 +13,22 @@ from .runs import record
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog="dcfa")
     parser.add_argument("--version", action="version", version=version("dcfa"))
-    parser.add_argument("command", choices=["check-sources", "record-run"])
+    commands = parser.add_subparsers(dest="command", required=True)
+    commands.add_parser("check-sources")
+    commands.add_parser("record-run")
+    commands.add_parser("scs", help="Summarize one isolated local Skill snapshot").add_argument(
+        "directory", type=Path
+    )
     args = parser.parse_args(argv)
     logging.basicConfig(format="%(levelname)s %(name)s %(message)s", level=logging.INFO)
     logger = logging.getLogger("dcfa")
+    if args.command == "scs":
+        from .scs import extract
+
+        summary = extract(args.directory)
+        print(json.dumps(summary, indent=2))
+        logger.info("scs %s", summary["status"])
+        return 0 if summary["status"] == "complete" else 1
     result = inspect_registry(Path("third_party/sources.json"))
     output = dict(result)
     if args.command == "record-run":

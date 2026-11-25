@@ -7,7 +7,7 @@ name = "dcfa"
 version = "0.1.0"
 description = "Research infrastructure for single Skill update studies"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = ["PyYAML>=6,<7", "fastjsonschema>=2.21,<3"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10", "ruff>=0.12,<1"]
@@ -17,6 +17,9 @@ dcfa = "dcfa.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+dcfa = ["scs.schema.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests/unit"]

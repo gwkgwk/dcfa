@@ -7,6 +7,12 @@ REGISTERED = frozenset({"empty-registry.json"})
 
 
 @pytest.fixture
+def scs_demo():
+    """Registered synthetic Skill snapshot for P03."""
+    return SYNTHETIC / "scs-demo"
+
+
+@pytest.fixture
 def synthetic_bytes():
     def read(name):
         if name not in REGISTERED:

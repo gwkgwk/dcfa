@@ -1,0 +1,185 @@
+{
+  "schema_version": "p03.1",
+  "status": "partial",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "role": "skill_document"
+    },
+    {
+      "path": "scripts/format.py",
+      "role": "script"
+    },
+    {
+      "path": "resources/layout.txt",
+      "role": "resource"
+    }
+  ],
+  "ports": [
+    {
+      "direction": "input",
+      "data_type": "Text",
+      "sensitivity": "Private",
+      "trust_origin": "local",
+      "exposure_scope": null,
+      "consumability": null,
+      "evidence": {
+        "path": "SKILL.md",
+        "start_line": 3,
+        "end_line": 6,
+        "snippet": "input:\n  data_type: Text\n  sensitivity: Private\n  trust_origin: local",
+        "method": "frontmatter",
+        "confidence": 1.0
+      }
+    },
+    {
+      "direction": "output",
+      "data_type": "Text",
+      "sensitivity": null,
+      "trust_origin": null,
+      "exposure_scope": null,
+      "consumability": null,
+      "evidence": {
+        "path": "SKILL.md",
+        "start_line": 7,
+        "end_line": 7,
+        "snippet": "output: Text",
+        "method": "frontmatter",
+        "confidence": 1.0
+      }
+    },
+    {
+      "direction": "input",
+      "data_type": "Text",
+      "sensitivity": null,
+      "trust_origin": null,
+      "exposure_scope": null,
+      "consumability": null,
+      "evidence": {
+        "path": "SKILL.md",
+        "start_line": 17,
+        "end_line": 17,
+        "snippet": "Accept text.",
+        "method": "instruction",
+        "confidence": 0.5
+      }
+    },
+    {
+      "direction": "output",
+      "data_type": "Text",
+      "sensitivity": null,
+      "trust_origin": null,
+      "exposure_scope": null,
+      "consumability": null,
+      "evidence": {
+        "path": "SKILL.md",
+        "start_line": 18,
+        "end_line": 18,
+        "snippet": "Return text.",
+        "method": "instruction",
+        "confidence": 0.5
+      }
+    }
+  ],
+  "effects": [
+    {
+      "name": "persistent-state write",
+      "preserves_sensitivity": null,
+      "crosses_boundary": null,
+      "requires_authorization": true,
+      "evidence": {
+        "path": "SKILL.md",
+        "start_line": 8,
+        "end_line": 10,
+        "snippet": "effect:\n  name: persistent-state write\n  requires_authorization: true",
+        "method": "frontmatter",
+        "confidence": 1.0
+      }
+    }
+  ],
+  "operations": [
+    {
+      "name": "accept",
+      "parameters": null,
+      "evidence": {
+        "path": "SKILL.md",
+        "start_line": 17,
+        "end_line": 17,
+        "snippet": "Accept text.",
+        "method": "instruction",
+        "confidence": 0.5
+      }
+    },
+    {
+      "name": "return",
+      "parameters": null,
+      "evidence": {
+        "path": "SKILL.md",
+        "start_line": 18,
+        "end_line": 18,
+        "snippet": "Return text.",
+        "method": "instruction",
+        "confidence": 0.5
+      }
+    },
+    {
+      "name": "value.strip",
+      "parameters": [],
+      "evidence": {
+        "path": "scripts/format.py",
+        "start_line": 2,
+        "end_line": 2,
+        "snippet": "    return value.strip()",
+        "method": "python_ast",
+        "confidence": 1.0
+      }
+    }
+  ],
+  "context_exposure": [
+    {
+      "scope": "workspace",
+      "evidence": {
+        "path": "SKILL.md",
+        "start_line": 11,
+        "end_line": 11,
+        "snippet": "context_exposure: workspace",
+        "method": "frontmatter",
+        "confidence": 1.0
+      }
+    }
+  ],
+  "trust_boundaries": [
+    {
+      "source": "local",
+      "destination": "persistent state",
+      "evidence": {
+        "path": "SKILL.md",
+        "start_line": 12,
+        "end_line": 14,
+        "snippet": "trust_boundary:\n  source: local\n  destination: persistent state",
+        "method": "frontmatter",
+        "confidence": 1.0
+      }
+    }
+  ],
+  "diagnostics": [
+    {
+      "state": "unknown",
+      "reason": "uninterpreted_instruction",
+      "path": "SKILL.md",
+      "line": 19
+    },
+    {
+      "state": "unknown",
+      "reason": "runtime_semantics_unresolved",
+      "path": "scripts/format.py",
+      "line": null
+    },
+    {
+      "state": "unknown",
+      "reason": "inventory_only",
+      "path": "resources/layout.txt",
+      "line": null
+    }
+  ]
+}

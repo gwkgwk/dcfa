@@ -1,0 +1,322 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "p03.1"
+    },
+    "status": {
+      "enum": [
+        "complete",
+        "partial",
+        "failed"
+      ]
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "skill_document",
+              "metadata",
+              "script",
+              "resource"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "role"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "ports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "direction": {
+            "enum": [
+              "input",
+              "output"
+            ]
+          },
+          "data_type": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "sensitivity": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "trust_origin": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "exposure_scope": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "consumability": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "evidence": {
+            "$ref": "#/definitions/evidence"
+          }
+        },
+        "required": [
+          "direction",
+          "data_type",
+          "sensitivity",
+          "trust_origin",
+          "exposure_scope",
+          "consumability",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "preserves_sensitivity": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "crosses_boundary": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "requires_authorization": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          },
+          "evidence": {
+            "$ref": "#/definitions/evidence"
+          }
+        },
+        "required": [
+          "name",
+          "preserves_sensitivity",
+          "crosses_boundary",
+          "requires_authorization",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parameters": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence": {
+            "$ref": "#/definitions/evidence"
+          }
+        },
+        "required": [
+          "name",
+          "parameters",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "context_exposure": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "$ref": "#/definitions/evidence"
+          }
+        },
+        "required": [
+          "scope",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "trust_boundaries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "minLength": 1
+          },
+          "destination": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence": {
+            "$ref": "#/definitions/evidence"
+          }
+        },
+        "required": [
+          "source",
+          "destination",
+          "evidence"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "enum": [
+              "unknown",
+              "parse_failure",
+              "missing_evidence",
+              "read_failure"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "line": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "state",
+          "reason",
+          "path",
+          "line"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "files",
+    "ports",
+    "effects",
+    "operations",
+    "context_exposure",
+    "trust_boundaries",
+    "diagnostics"
+  ],
+  "additionalProperties": false,
+  "definitions": {
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "start_line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "end_line": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "snippet": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "enum": [
+            "frontmatter",
+            "instruction",
+            "python_ast"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "path",
+        "start_line",
+        "end_line",
+        "snippet",
+        "method",
+        "confidence"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
