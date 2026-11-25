@@ -1,0 +1,227 @@
+[
+  {
+    "id": "N1",
+    "property": "指令声明输入端口",
+    "files": {
+      "SKILL.md": "Accept text."
+    },
+    "expected": {
+      "scs": [
+        "port:input:Text",
+        "instruction_action:accept"
+      ],
+      "edges": [
+        "instruction:Accept text.|describes|instruction_action:accept|possible",
+        "input_port:Text|reads|instruction_action:accept|possible"
+      ]
+    }
+  },
+  {
+    "id": "P1",
+    "property": "调用语法及实参",
+    "files": {
+      "SKILL.md": "",
+      "logic.py": "polish(item)"
+    },
+    "expected": {
+      "scs": [
+        "call_expression:polish"
+      ],
+      "edges": [
+        "data_expression:item|operand|call_expression:polish|static"
+      ]
+    },
+    "arguments": [
+      [
+        "item"
+      ]
+    ]
+  },
+  {
+    "id": "T1",
+    "property": "显式工具绑定",
+    "files": {
+      "SKILL.md": "",
+      "logic.py": "stamp()"
+    },
+    "expected": {
+      "scs": [
+        "call_expression:stamp"
+      ],
+      "edges": [
+        "call_expression:stamp|may_invoke|tool:mock-stamp|possible"
+      ]
+    },
+    "bindings": [
+      {
+        "operation": 0,
+        "callee": "stamp",
+        "tool": "mock-stamp",
+        "basis": "synthetic test contract"
+      }
+    ]
+  },
+  {
+    "id": "T2",
+    "property": "无绑定不能认定工具",
+    "files": {
+      "SKILL.md": "",
+      "logic.py": "stamp()"
+    },
+    "expected": {
+      "scs": [
+        "call_expression:stamp"
+      ],
+      "edges": []
+    },
+    "unknown": "tool_binding_unresolved"
+  },
+  {
+    "id": "D1",
+    "property": "直接嵌套值流",
+    "files": {
+      "SKILL.md": "",
+      "logic.py": "wrap(make())"
+    },
+    "expected": {
+      "scs": [
+        "call_expression:wrap",
+        "call_expression:make"
+      ],
+      "edges": [
+        "data_expression:make()|operand|call_expression:wrap|static",
+        "call_expression:make|result_to_operand|data_expression:make()|possible"
+      ]
+    }
+  },
+  {
+    "id": "D2",
+    "property": "跨语句定义使用",
+    "files": {
+      "SKILL.md": "",
+      "logic.py": "v = make()\nwrap(v)"
+    },
+    "expected": {
+      "scs": [
+        "call_expression:make",
+        "call_expression:wrap"
+      ],
+      "edges": [
+        "data_expression:v|operand|call_expression:wrap|static"
+      ]
+    },
+    "unrepresented": "make 的返回值经变量 v 到达 wrap 的参数"
+  },
+  {
+    "id": "C1",
+    "property": "分支执行条件",
+    "files": {
+      "SKILL.md": "",
+      "logic.py": "if enabled:\n    stamp()"
+    },
+    "expected": {
+      "scs": [
+        "call_expression:stamp"
+      ],
+      "edges": []
+    },
+    "unrepresented": "enabled 为真才进入 stamp 所在分支"
+  },
+  {
+    "id": "C2",
+    "property": "显式授权约束",
+    "files": {
+      "SKILL.md": "---\neffect:\n  name: write\n  requires_authorization: true\n---"
+    },
+    "expected": {
+      "scs": [
+        "effect:write"
+      ],
+      "edges": []
+    },
+    "authorization": true
+  },
+  {
+    "id": "E1",
+    "property": "声明动作的可能效果",
+    "files": {
+      "SKILL.md": "Send URL from local to external."
+    },
+    "expected": {
+      "scs": [
+        "port:output:URL",
+        "effect:send",
+        "instruction_action:send",
+        "context:external",
+        "boundary:local→external"
+      ],
+      "edges": [
+        "instruction:Send URL from local to external.|describes|instruction_action:send|possible",
+        "instruction_action:send|produces|output_port:URL|possible",
+        "instruction_action:send|may_cause|effect:send|possible",
+        "instruction_action:send|exposes|context:external|possible",
+        "instruction_action:send|crosses-boundary|trust_boundary:local → external|possible"
+      ]
+    }
+  },
+  {
+    "id": "M1",
+    "property": "一条绑定边的两个原件",
+    "files": {
+      "SKILL.md": "",
+      "logic.py": "stamp()"
+    },
+    "expected": {
+      "scs": [
+        "call_expression:stamp"
+      ],
+      "edges": [
+        "call_expression:stamp|may_invoke|tool:mock-stamp|possible"
+      ]
+    },
+    "bindings": [
+      {
+        "operation": 0,
+        "callee": "stamp",
+        "tool": "mock-stamp",
+        "basis": "synthetic test contract"
+      }
+    ],
+    "sourceFiles": [
+      "skill/logic.py",
+      "analyst/bindings.json"
+    ]
+  },
+  {
+    "id": "U1",
+    "property": "未解释文字保留未知",
+    "files": {
+      "SKILL.md": "Consider the preference."
+    },
+    "expected": {
+      "scs": [],
+      "edges": []
+    },
+    "unknown": "uninterpreted_instruction"
+  },
+  {
+    "id": "S1",
+    "property": "非能力说明改写时语义投影稳定",
+    "files": {
+      "SKILL.md": "Accept text.\nA note about formatting."
+    },
+    "expected": {
+      "scs": [
+        "port:input:Text",
+        "instruction_action:accept"
+      ],
+      "edges": [
+        "instruction:Accept text.|describes|instruction_action:accept|possible",
+        "input_port:Text|reads|instruction_action:accept|possible"
+      ]
+    },
+    "variant": {
+      "SKILL.md": "A different note.\nAccept text."
+    }
+  }
+]
