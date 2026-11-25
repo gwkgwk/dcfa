@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "audit_stage": "P01",
+  "checked_on": "2026-11-25",
+  "paper": {
+    "title": "Detecting Insecure Compositions of Clean Agent Skills via Capability-Flow Graph Analysis",
+    "authors": [
+      "Yihao Li",
+      "Chuanpu Fu",
+      "Yizhou Zhao",
+      "Miao Chen",
+      "Qi Li",
+      "Ke Xu"
+    ],
+    "version": "arXiv:2610.32155v1",
+    "submitted_utc": "2026-10-23T04:47:10Z",
+    "doi": "10.48550/arXiv.2610.32155",
+    "version_history": "https://arxiv.org/abs/2610.32155",
+    "html": "https://arxiv.org/html/2610.32155v1",
+    "pdf": "https://arxiv.org/pdf/2610.32155v1",
+    "pdf_bytes": 1331954,
+    "pdf_sha256": "076454c7078063e0968bcd1137e50d85c9d517df2d34a9ae0eece651b5252ddd",
+    "license": "arXiv.org perpetual non-exclusive license",
+    "license_evidence": "https://arxiv.org/html/2610.32155v1"
+  },
+  "implementation": {
+    "status": "official_public_source_not_located",
+    "repository": null,
+    "license": null,
+    "commit": null,
+    "official_tests": null,
+    "follow_up_classification": "paper_method_reimplementation"
+  },
+  "search_evidence": [
+    {
+      "source": "arXiv abstract, v1 full text and references",
+      "finding": "No attributed KnotScryer repository identified. Reference [10] is Cisco Skill Scanner."
+    },
+    {
+      "url": "https://api.github.com/search/repositories?q=KnotScryer",
+      "total_count": 0
+    },
+    {
+      "url": "https://api.github.com/search/repositories?q=KnotScryer+in%3Aname%2Cdescription%2Creadme",
+      "total_count": 1,
+      "match": "Sully2490/multi-agent-control-hub-kit",
+      "finding": "Public metadata describes a starter kit; no verified author link."
+    },
+    {
+      "source": "Public web search",
+      "queries": [
+        "\"KnotScryer\" \"Yihao\" implementation artifact GitHub Zenodo code official",
+        "\"2610.32155\" repository artifact open source github KnotScryer author homepage"
+      ],
+      "finding": "No author-attributed release identified."
+    }
+  ]
+}
