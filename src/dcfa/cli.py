@@ -23,9 +23,16 @@ def main(argv=None) -> int:
     logging.basicConfig(format="%(levelname)s %(name)s %(message)s", level=logging.INFO)
     logger = logging.getLogger("dcfa")
     if args.command == "scs":
-        from .scs import extract
+        from fastjsonschema import JsonSchemaException
 
-        summary = extract(args.directory)
+        from .scs import extract, validate
+
+        try:
+            summary = extract(args.directory)
+            validate(summary)
+        except (JsonSchemaException, OSError, ValueError):
+            print(json.dumps({"status": "failed", "error": "scs_contract_failure"}))
+            return 1
         print(json.dumps(summary, indent=2))
         logger.info("scs %s", summary["status"])
         return 0 if summary["status"] == "complete" else 1

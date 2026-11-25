@@ -3,13 +3,14 @@
   "type": "object",
   "properties": {
     "schema_version": {
-      "const": "p03.1"
+      "const": "p03.2"
     },
     "status": {
       "enum": [
         "complete",
         "partial",
-        "failed"
+        "failed",
+        "partial_read"
       ]
     },
     "files": {
@@ -28,11 +29,20 @@
               "script",
               "resource"
             ]
+          },
+          "processing": {
+            "enum": [
+              "processed",
+              "parse_failed",
+              "unread",
+              "inventory_only"
+            ]
           }
         },
         "required": [
           "path",
-          "role"
+          "role",
+          "processing"
         ],
         "additionalProperties": false
       }
@@ -85,6 +95,13 @@
           },
           "evidence": {
             "$ref": "#/definitions/evidence"
+          },
+          "transfer_source": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
           }
         },
         "required": [
@@ -94,7 +111,8 @@
           "trust_origin",
           "exposure_scope",
           "consumability",
-          "evidence"
+          "evidence",
+          "transfer_source"
         ],
         "additionalProperties": false
       }
@@ -165,14 +183,51 @@
           },
           "evidence": {
             "$ref": "#/definitions/evidence"
+          },
+          "kind": {
+            "enum": [
+              "call_expression",
+              "instruction_action"
+            ],
+            "description": "A call expression is syntax evidence only. It does not establish an exposed action or entry point."
           }
         },
         "required": [
           "name",
           "parameters",
-          "evidence"
+          "evidence",
+          "kind"
         ],
-        "additionalProperties": false
+        "additionalProperties": false,
+        "if": {
+          "properties": {
+            "kind": {
+              "const": "call_expression"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "evidence": {
+              "properties": {
+                "method": {
+                  "const": "python_ast"
+                }
+              }
+            }
+          }
+        },
+        "else": {
+          "properties": {
+            "evidence": {
+              "properties": {
+                "method": {
+                  "const": "instruction"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "context_exposure": {

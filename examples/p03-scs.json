@@ -1,24 +1,28 @@
 {
-  "schema_version": "p03.1",
+  "schema_version": "p03.2",
   "status": "partial",
   "files": [
     {
       "path": "SKILL.md",
-      "role": "skill_document"
+      "role": "skill_document",
+      "processing": "processed"
     },
     {
       "path": "scripts/format.py",
-      "role": "script"
+      "role": "script",
+      "processing": "processed"
     },
     {
       "path": "resources/layout.txt",
-      "role": "resource"
+      "role": "resource",
+      "processing": "inventory_only"
     }
   ],
   "ports": [
     {
       "direction": "input",
       "data_type": "Text",
+      "transfer_source": null,
       "sensitivity": "Private",
       "trust_origin": "local",
       "exposure_scope": null,
@@ -35,6 +39,7 @@
     {
       "direction": "output",
       "data_type": "Text",
+      "transfer_source": null,
       "sensitivity": null,
       "trust_origin": null,
       "exposure_scope": null,
@@ -51,6 +56,7 @@
     {
       "direction": "input",
       "data_type": "Text",
+      "transfer_source": null,
       "sensitivity": null,
       "trust_origin": null,
       "exposure_scope": null,
@@ -67,6 +73,7 @@
     {
       "direction": "output",
       "data_type": "Text",
+      "transfer_source": null,
       "sensitivity": null,
       "trust_origin": null,
       "exposure_scope": null,
@@ -101,6 +108,7 @@
     {
       "name": "accept",
       "parameters": null,
+      "kind": "instruction_action",
       "evidence": {
         "path": "SKILL.md",
         "start_line": 17,
@@ -113,6 +121,7 @@
     {
       "name": "return",
       "parameters": null,
+      "kind": "instruction_action",
       "evidence": {
         "path": "SKILL.md",
         "start_line": 18,
@@ -125,6 +134,7 @@
     {
       "name": "value.strip",
       "parameters": [],
+      "kind": "call_expression",
       "evidence": {
         "path": "scripts/format.py",
         "start_line": 2,
@@ -163,6 +173,12 @@
     }
   ],
   "diagnostics": [
+    {
+      "state": "unknown",
+      "reason": "uninterpreted_instruction",
+      "path": "SKILL.md",
+      "line": 16
+    },
     {
       "state": "unknown",
       "reason": "uninterpreted_instruction",

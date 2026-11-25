@@ -58,6 +58,18 @@ def scan(root, issue):
         issue("read_failure", "unsafe_entry", "SKILL.md")
         return
     pending = [Path(".")]
+
+    def check_streams(path, rel):
+        if os.name == "nt":
+            from .windows_streams import has_named_stream
+
+            try:
+                if has_named_stream(path):
+                    issue("unknown", "named_stream_unexamined", rel)
+            except OSError:
+                issue("read_failure", "stream_inventory_failed", rel)
+
+    check_streams(root, ".")
     count = total = 0
     while pending:
         directory = pending.pop()
@@ -83,6 +95,7 @@ def scan(root, issue):
                     issue("read_failure", "redirected_entry", rel)
                     continue
                 if stat.S_ISDIR(info.st_mode):
+                    check_streams(filename, rel)
                     if len(path.parts) < MAX_DEPTH:
                         pending.append(path)
                     else:
@@ -92,6 +105,7 @@ def scan(root, issue):
                     issue("read_failure", "unsafe_entry", rel)
                     continue
                 kind = role(path)
+                check_streams(filename, rel)
                 # Only read the document, Python scripts and explicit YAML metadata.
                 supported = (
                     kind == "skill_document"

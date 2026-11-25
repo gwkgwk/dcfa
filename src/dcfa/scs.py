@@ -3,6 +3,7 @@
 import ast
 import json
 import re
+from functools import lru_cache
 from importlib.resources import files
 from pathlib import Path
 
@@ -18,10 +19,15 @@ PORT_ATTRS = ("sensitivity", "trust_origin", "exposure_scope", "consumability")
 FLAGS = ("preserves_sensitivity", "crosses_boundary", "requires_authorization")
 
 
+@lru_cache(maxsize=1)
+def _validator():
+    schema = json.loads(files("dcfa").joinpath("scs.schema.json").read_text(encoding="utf-8"))
+    return fastjsonschema.compile(schema)
+
+
 def validate(summary):
     """Raise fastjsonschema.JsonSchemaValueException on an invalid SCS."""
-    schema = json.loads(files("dcfa").joinpath("scs.schema.json").read_text(encoding="utf-8"))
-    fastjsonschema.compile(schema)(summary)
+    _validator()(summary)
 
 
 class Material:
@@ -32,6 +38,8 @@ class Material:
         self.issue = issue
 
     def add(self, group, fields, start, end, method):
+        if group == "operations":
+            fields["kind"] = "call_expression" if method == "python_ast" else "instruction_action"
         snippet = "\n".join(self.lines[start - 1 : end])
         if not snippet.strip() or len(snippet) > 2048:
             self.issue("missing_evidence", "snippet_unavailable_or_too_long", self.path, start)
@@ -52,6 +60,7 @@ class Material:
             {
                 "direction": direction,
                 "data_type": data_type,
+                "transfer_source": attrs.get("transfer_source"),
                 **{k: attrs.get(k) for k in PORT_ATTRS},
             },
             start,
@@ -103,6 +112,13 @@ class Material:
                         self.issue("parse_failure", "ambiguous_declaration", self.path, start)
                         break
                     attrs[k.value] = v.value
+                    if name == "trust_boundary" and k.value not in {"source", "destination"}:
+                        self.issue(
+                            "unknown",
+                            "unsupported_boundary_attribute",
+                            self.path,
+                            offset + k.start_mark.line + 1,
+                        )
                 else:
                     self.declaration(name, attrs, None, start, end)
                 continue
@@ -112,9 +128,22 @@ class Material:
     def declaration(self, name, attrs, scalar, start, end):
         if name in {"input", "output"}:
             dtype = scalar or attrs.get("data_type")
-            self.port(name, dtype, attrs, start, end, "frontmatter")
-            if not dtype or attrs.keys() - {"data_type", *PORT_ATTRS}:
+            if not dtype:
                 self.issue("unknown", "incomplete_port_declaration", self.path, start)
+                return
+            canonical = TYPES.get(dtype.lower())
+            if canonical is None:
+                self.issue("unknown", "unknown_data_type", self.path, start)
+            self.port(
+                name,
+                canonical or dtype,
+                {k: attrs.get(k) for k in PORT_ATTRS},
+                start,
+                end,
+                "frontmatter",
+            )
+            if attrs.keys() - {"data_type", *PORT_ATTRS}:
+                self.issue("unknown", "unsupported_port_attribute", self.path, start)
         elif name == "effect" and (scalar or attrs.get("name")):
             flags = {k: {"true": True, "false": False}.get(attrs.get(k)) for k in FLAGS}
             self.add(
@@ -140,7 +169,7 @@ class Material:
 
     def document(self, frontmatter=True):
         offset = 0
-        if frontmatter and self.lines[0].strip() == "---":
+        if frontmatter and self.lines[0].rstrip() == "---":
             closing = next(
                 (
                     i
@@ -155,18 +184,27 @@ class Material:
             self.metadata(self.lines[1:closing], 1)
             offset = closing + 1
         fenced = None
+        opening_line = None
         for number, line in enumerate(self.lines[offset:], offset + 1):
             stripped = line.strip()
+            if line.expandtabs(4).startswith("    "):
+                if stripped and not fenced:
+                    self.issue("unknown", "embedded_example", self.path, number)
+                continue
             fence = re.match(r"^(`{3,}|~{3,})", stripped)
             if fence:
                 if fenced is None:
                     fenced = fence[1]
+                    opening_line = number
                     self.issue("unknown", "embedded_example", self.path, number)
                 elif stripped.startswith(fenced) and not stripped.strip(fenced[0]):
                     fenced = None
                 continue
-            if fenced or not stripped or stripped.startswith("#"):
+            if fenced or not stripped:
                 continue
+            stripped = re.sub(r"^#{1,6}(?:[ \t]+|$)", "", stripped)
+            if stripped != line.strip():
+                stripped = re.sub(r"[ \t]+#+$", "", stripped)
             transfer = re.fullmatch(
                 r"(?:[-*] )?(send|write) (text|url|code|command) from "
                 r"(local|workspace) to (external|persistent state)"
@@ -180,7 +218,7 @@ class Material:
                 self.port(
                     "output",
                     TYPES[dtype.lower()],
-                    {"exposure_scope": destination},
+                    {"exposure_scope": destination, "transfer_source": origin},
                     number,
                     number,
                     "instruction",
@@ -231,6 +269,8 @@ class Material:
                 )
             else:
                 self.issue("unknown", "uninterpreted_instruction", self.path, number)
+        if fenced:
+            self.issue("unknown", "unclosed_fence", self.path, opening_line)
 
     def python(self, text):
         # A bounded token count also limits the native parser's stack exposure.
@@ -246,7 +286,10 @@ class Material:
         except (SyntaxError, ValueError, RecursionError, tokenize.TokenError) as exc:
             self.issue("parse_failure", "invalid_python", self.path, getattr(exc, "lineno", None))
             return
-        for call in (n for n in ast.walk(tree) if isinstance(n, ast.Call)):
+        calls = (n for n in ast.walk(tree) if isinstance(n, ast.Call))
+        for call in sorted(
+            calls, key=lambda n: (n.lineno, n.col_offset, n.end_lineno, n.end_col_offset)
+        ):
             target = call.func
             parts = []
             while isinstance(target, ast.Attribute):
@@ -269,21 +312,31 @@ class Material:
 
 def extract(root: Path) -> dict:
     summary = {
-        "schema_version": "p03.1",
+        "schema_version": "p03.2",
         "status": "complete",
         "files": [],
         **{k: [] for k in GROUPS},
         "diagnostics": [],
     }
 
+    inventory = {}
+
     def issue(state, reason, path, line=None):
         summary["diagnostics"].append(dict(state=state, reason=reason, path=path, line=line))
+        if path in inventory:
+            if reason == "inventory_only":
+                inventory[path]["processing"] = "inventory_only"
+            elif state == "parse_failure":
+                inventory[path]["processing"] = "parse_failed"
 
     has_document = False
     for path, kind, text in scan(root, issue):
         if text is None:
-            summary["files"].append({"path": path, "role": kind})
+            entry = {"path": path, "role": kind, "processing": "unread"}
+            inventory[path] = entry
+            summary["files"].append(entry)
             continue
+        inventory[path]["processing"] = "processed"
         material = Material(path, text.replace("\r\n", "\n").replace("\r", "\n"), summary, issue)
         if kind == "skill_document":
             has_document = True
@@ -296,8 +349,9 @@ def extract(root: Path) -> dict:
         if not summary[group]:
             issue("missing_evidence", "no_claim_" + group, ".")
     if not has_document:
-        issue("missing_evidence", "required_document_unavailable", "SKILL.md")
         summary["status"] = "failed"
+    elif any(d["state"] == "read_failure" for d in summary["diagnostics"]):
+        summary["status"] = "partial_read"
     elif summary["diagnostics"]:
         summary["status"] = "partial"
     validate(summary)
