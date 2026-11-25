@@ -16,6 +16,10 @@ def main(argv=None) -> int:
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("check-sources")
     commands.add_parser("record-run")
+    evidence = commands.add_parser("evidence", help="Verify graph evidence against original files")
+    evidence.add_argument("graph", type=Path)
+    evidence.add_argument("directory", type=Path)
+    evidence.add_argument("--bindings", type=Path)
     graph = commands.add_parser("graph", help="Build a single Skill graph from p03.2 JSON")
     graph.add_argument("summary", type=Path)
     graph.add_argument("--bindings", type=Path)
@@ -26,6 +30,19 @@ def main(argv=None) -> int:
     args = parser.parse_args(argv)
     logging.basicConfig(format="%(levelname)s %(name)s %(message)s", level=logging.INFO)
     logger = logging.getLogger("dcfa")
+    if args.command == "evidence":
+        from fastjsonschema import JsonSchemaException
+
+        from .evidence import build_index
+
+        try:
+            graph_data = json.loads(args.graph.read_text(encoding="utf-8-sig"))
+            index = build_index(graph_data, args.directory, args.bindings)
+            print(json.dumps(index, indent=2))
+        except (JsonSchemaException, ValueError, OSError, RecursionError) as exc:
+            logger.error("evidence verification failed (%s)", type(exc).__name__)
+            return 2
+        return 0 if index["mapping_status"] == "verified" else 1
     if args.command == "graph":
         from fastjsonschema import JsonSchemaException
 

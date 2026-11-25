@@ -29,7 +29,7 @@ def redirected(info):
     )
 
 
-def scan(root, issue):
+def scan(root, issue, *, on_bytes=None):
     """Yield (relative path, role, optional text); report all skipped inputs."""
     root = Path(root)
     if (
@@ -70,7 +70,7 @@ def scan(root, issue):
                 issue("read_failure", "stream_inventory_failed", rel)
 
     check_streams(root, ".")
-    count = total = 0
+    count = total = inventory_total = 0
     while pending:
         directory = pending.pop()
         try:
@@ -115,6 +115,18 @@ def scan(root, issue):
                 yield rel, kind, None
                 if not supported:
                     issue("unknown", "inventory_only", rel)
+                    if on_bytes is not None:
+                        limit = min(MAX_FILE, MAX_TOTAL - inventory_total)
+                        if info.st_size > limit:
+                            issue("read_failure", "inventory_hash_limit", rel)
+                            continue
+                        with filename.open("rb") as stream:
+                            data = stream.read(limit + 1)
+                        inventory_total += len(data)
+                        if len(data) == info.st_size:
+                            on_bytes(rel, data)
+                        else:
+                            issue("read_failure", "snapshot_changed", rel)
                     continue
                 if info.st_size > MAX_FILE or total + info.st_size > MAX_TOTAL:
                     issue("read_failure", "byte_limit", rel)
@@ -125,6 +137,8 @@ def scan(root, issue):
                 if len(data) != info.st_size:
                     issue("read_failure", "snapshot_changed", rel)
                     continue
+                if on_bytes is not None:
+                    on_bytes(rel, data)
                 yield rel, kind, data.decode("utf-8-sig")
             except UnicodeDecodeError:
                 issue("parse_failure", "invalid_utf8", rel)

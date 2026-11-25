@@ -272,7 +272,7 @@ class Material:
         if fenced:
             self.issue("unknown", "unclosed_fence", self.path, opening_line)
 
-    def python(self, text):
+    def python(self, text, *, on_call=None):
         # A bounded token count also limits the native parser's stack exposure.
         import io
         import tokenize
@@ -300,6 +300,7 @@ class Material:
                 continue
             name = ".".join(reversed([*parts, target.id]))
             args = [ast.get_source_segment(text, arg) for arg in (*call.args, *call.keywords)]
+            previous = len(self.summary["operations"])
             self.add(
                 "operations",
                 {"name": name, "parameters": args},
@@ -307,6 +308,8 @@ class Material:
                 call.end_lineno,
                 "python_ast",
             )
+            if on_call is not None and len(self.summary["operations"]) > previous:
+                on_call(self.summary["operations"][-1], call)
         self.issue("unknown", "runtime_semantics_unresolved", self.path)
 
 
