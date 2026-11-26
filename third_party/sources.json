@@ -1,1 +1,15 @@
-{"schema_version": 1, "sources": []}
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "rogueone-p07",
+      "paper": "https://yinzhicao.org/RogueOne/RogueOne-ICSE24.PDF",
+      "paper_version": "ICSE 2024, author-hosted conference PDF",
+      "paper_sha256": "715832d5abfc613f05f2cfd64a5a5ea9bed61069b85614ec391e06b6c3635822",
+      "repository": "https://github.com/columbia/rogueone",
+      "commit": "d92d7de0eedb5754dc4d41b426d45a83715c0bd1",
+      "kind": "original",
+      "pin_basis": "User-confirmed upstream commit used for P07. Correspondence to the camera-ready release is unverified."
+    }
+  ]
+}

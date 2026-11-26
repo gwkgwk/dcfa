@@ -621,7 +621,7 @@
     </node>
     <node id="1683">
       <data key="d0">string</data>
-      <data key="d2">C:/Users/Monkey/AppData/Local/Temp/dcfa-p07-d92d7de/pair2/sample-1.1.0/index.js</data>
+      <data key="d2">sample-1.1.0/index.js</data>
       <data key="d1">ObjTypes.Static</data>
     </node>
     <node id="1226">
@@ -877,7 +877,7 @@
     </node>
     <node id="1673">
       <data key="d0">function</data>
-      <data key="d3">C:/Users/Monkey/AppData/Local/Temp/dcfa-p07-d92d7de/pair2/sample-1.1.0/index.js</data>
+      <data key="d3">sample-1.1.0/index.js</data>
       <data key="d1">ObjTypes.Other</data>
       <data key="d2">None</data>
     </node>
@@ -4581,7 +4581,7 @@
     </edge>
     <edge source="42" target="1673" id="552">
       <data key="d10">PARENT_TO_CHILD</data>
-      <data key="d11">C:/Users/Monkey/AppData/Local/Temp/dcfa-p07-d92d7de/pair2/sample-1.1.0/index.js</data>
+      <data key="d11">sample-1.1.0/index.js</data>
       <data key="d12">PARENT_TO_CHILD</data>
       <data key="d13">552</data>
     </edge>

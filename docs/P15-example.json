@@ -1,0 +1,1480 @@
+{
+  "change": {
+    "contexts": [
+      [
+        "preview",
+        "a"
+      ],
+      [
+        "preview",
+        "b"
+      ]
+    ],
+    "sides": [
+      {
+        "version": "old",
+        "graph_sha256": "1b38602a296951197b099ed9bef3059c81c05f2e1fe7807ad03d914c0cd9f7ac",
+        "environment": "E",
+        "skill": "one",
+        "members": [
+          "/scs/operations/0"
+        ],
+        "key": [
+          "confidentiality",
+          "worker",
+          "demo",
+          "send"
+        ],
+        "configuration": "E/p13/fixed-tools/fixed-budget",
+        "reports": [
+          {
+            "policy": "confidentiality",
+            "scope": {
+              "actor": "worker",
+              "action": "send",
+              "resource": "demo",
+              "purpose": "preview",
+              "invocation": "a"
+            },
+            "graph_sha256": "1b38602a296951197b099ed9bef3059c81c05f2e1fe7807ad03d914c0cd9f7ac",
+            "reference": "model",
+            "coverage_certificate": "closed",
+            "witnesses": [],
+            "candidates": [],
+            "excluded": [
+              {
+                "prefix": {
+                  "source": "/scs/operations/0/arg0",
+                  "effect": "/scs/operations/0",
+                  "edges": [
+                    4
+                  ],
+                  "reference": "binding",
+                  "private": true,
+                  "external": true,
+                  "sensitivity_retained": true,
+                  "feasible": true,
+                  "bound": true
+                },
+                "conditions": {
+                  "private": true,
+                  "sensitivity_retained": true,
+                  "external": true,
+                  "feasible": true,
+                  "bound": true,
+                  "unauthorized": false,
+                  "traceable": true
+                },
+                "authorization": {
+                  "actor": "worker",
+                  "resource": "demo",
+                  "action": "send",
+                  "purpose": "preview",
+                  "invocation": "a",
+                  "source": "/scs/operations/0/arg0",
+                  "allowed": true,
+                  "reference": "decision"
+                },
+                "unknown": [],
+                "evidence": [
+                  {
+                    "group": "nodes",
+                    "id": "/scs/operations/0/arg0",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(1)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(1)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "group": "edges",
+                    "id": "/edges/4",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(1)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(1)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "group": "nodes",
+                    "id": "/scs/operations/0",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(1)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(1)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "graph_gaps": [
+              {
+                "subject": "/scs/operations/0",
+                "reason": "tool_binding_unresolved",
+                "evidence": "/scs/operations/0"
+              },
+              {
+                "subject": "skill",
+                "reason": "uninterpreted_instruction",
+                "evidence": "/scs/diagnostics/0"
+              },
+              {
+                "subject": "skill",
+                "reason": "runtime_semantics_unresolved",
+                "evidence": "/scs/diagnostics/1"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_ports",
+                "evidence": "/scs/diagnostics/2"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_effects",
+                "evidence": "/scs/diagnostics/3"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_context_exposure",
+                "evidence": "/scs/diagnostics/4"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_trust_boundaries",
+                "evidence": "/scs/diagnostics/5"
+              }
+            ],
+            "reasons": [],
+            "lower": false,
+            "upper": false,
+            "state": "safe"
+          },
+          {
+            "policy": "confidentiality",
+            "scope": {
+              "actor": "worker",
+              "action": "send",
+              "resource": "demo",
+              "purpose": "preview",
+              "invocation": "b"
+            },
+            "graph_sha256": "1b38602a296951197b099ed9bef3059c81c05f2e1fe7807ad03d914c0cd9f7ac",
+            "reference": "model",
+            "coverage_certificate": "closed",
+            "witnesses": [],
+            "candidates": [],
+            "excluded": [
+              {
+                "prefix": {
+                  "source": "/scs/operations/0/arg0",
+                  "effect": "/scs/operations/0",
+                  "edges": [
+                    4
+                  ],
+                  "reference": "binding",
+                  "private": true,
+                  "external": true,
+                  "sensitivity_retained": true,
+                  "feasible": true,
+                  "bound": true
+                },
+                "conditions": {
+                  "private": true,
+                  "sensitivity_retained": true,
+                  "external": true,
+                  "feasible": true,
+                  "bound": true,
+                  "unauthorized": false,
+                  "traceable": true
+                },
+                "authorization": {
+                  "actor": "worker",
+                  "resource": "demo",
+                  "action": "send",
+                  "purpose": "preview",
+                  "invocation": "b",
+                  "source": "/scs/operations/0/arg0",
+                  "allowed": true,
+                  "reference": "decision"
+                },
+                "unknown": [],
+                "evidence": [
+                  {
+                    "group": "nodes",
+                    "id": "/scs/operations/0/arg0",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(1)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(1)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "group": "edges",
+                    "id": "/edges/4",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(1)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(1)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "group": "nodes",
+                    "id": "/scs/operations/0",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(1)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(1)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "graph_gaps": [
+              {
+                "subject": "/scs/operations/0",
+                "reason": "tool_binding_unresolved",
+                "evidence": "/scs/operations/0"
+              },
+              {
+                "subject": "skill",
+                "reason": "uninterpreted_instruction",
+                "evidence": "/scs/diagnostics/0"
+              },
+              {
+                "subject": "skill",
+                "reason": "runtime_semantics_unresolved",
+                "evidence": "/scs/diagnostics/1"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_ports",
+                "evidence": "/scs/diagnostics/2"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_effects",
+                "evidence": "/scs/diagnostics/3"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_context_exposure",
+                "evidence": "/scs/diagnostics/4"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_trust_boundaries",
+                "evidence": "/scs/diagnostics/5"
+              }
+            ],
+            "reasons": [],
+            "lower": false,
+            "upper": false,
+            "state": "safe"
+          }
+        ]
+      },
+      {
+        "version": "new",
+        "graph_sha256": "16278a46378310d46a65132105afa3e96c53b2b7c0579b55e3941ba69df2c691",
+        "environment": "E",
+        "skill": "one",
+        "members": [
+          "/scs/operations/0"
+        ],
+        "key": [
+          "confidentiality",
+          "worker",
+          "demo",
+          "send"
+        ],
+        "configuration": "E/p13/fixed-tools/fixed-budget",
+        "reports": [
+          {
+            "policy": "confidentiality",
+            "scope": {
+              "actor": "worker",
+              "action": "send",
+              "resource": "demo",
+              "purpose": "preview",
+              "invocation": "a"
+            },
+            "graph_sha256": "16278a46378310d46a65132105afa3e96c53b2b7c0579b55e3941ba69df2c691",
+            "reference": "model",
+            "coverage_certificate": "closed",
+            "witnesses": [],
+            "candidates": [],
+            "excluded": [
+              {
+                "prefix": {
+                  "source": "/scs/operations/0/arg0",
+                  "effect": "/scs/operations/0",
+                  "edges": [
+                    4
+                  ],
+                  "reference": "binding",
+                  "private": true,
+                  "external": true,
+                  "sensitivity_retained": true,
+                  "feasible": true,
+                  "bound": true
+                },
+                "conditions": {
+                  "private": true,
+                  "sensitivity_retained": true,
+                  "external": true,
+                  "feasible": true,
+                  "bound": true,
+                  "unauthorized": false,
+                  "traceable": true
+                },
+                "authorization": {
+                  "actor": "worker",
+                  "resource": "demo",
+                  "action": "send",
+                  "purpose": "preview",
+                  "invocation": "a",
+                  "source": "/scs/operations/0/arg0",
+                  "allowed": true,
+                  "reference": "decision"
+                },
+                "unknown": [],
+                "evidence": [
+                  {
+                    "group": "nodes",
+                    "id": "/scs/operations/0/arg0",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(2)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(2)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "group": "edges",
+                    "id": "/edges/4",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(2)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(2)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "group": "nodes",
+                    "id": "/scs/operations/0",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(2)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(2)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "graph_gaps": [
+              {
+                "subject": "/scs/operations/0",
+                "reason": "tool_binding_unresolved",
+                "evidence": "/scs/operations/0"
+              },
+              {
+                "subject": "skill",
+                "reason": "uninterpreted_instruction",
+                "evidence": "/scs/diagnostics/0"
+              },
+              {
+                "subject": "skill",
+                "reason": "runtime_semantics_unresolved",
+                "evidence": "/scs/diagnostics/1"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_ports",
+                "evidence": "/scs/diagnostics/2"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_effects",
+                "evidence": "/scs/diagnostics/3"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_context_exposure",
+                "evidence": "/scs/diagnostics/4"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_trust_boundaries",
+                "evidence": "/scs/diagnostics/5"
+              }
+            ],
+            "reasons": [],
+            "lower": false,
+            "upper": false,
+            "state": "safe"
+          },
+          {
+            "policy": "confidentiality",
+            "scope": {
+              "actor": "worker",
+              "action": "send",
+              "resource": "demo",
+              "purpose": "preview",
+              "invocation": "b"
+            },
+            "graph_sha256": "16278a46378310d46a65132105afa3e96c53b2b7c0579b55e3941ba69df2c691",
+            "reference": "model",
+            "coverage_certificate": "closed",
+            "witnesses": [
+              {
+                "prefix": {
+                  "source": "/scs/operations/0/arg0",
+                  "effect": "/scs/operations/0",
+                  "edges": [
+                    4
+                  ],
+                  "reference": "binding",
+                  "private": true,
+                  "external": true,
+                  "sensitivity_retained": true,
+                  "feasible": true,
+                  "bound": true
+                },
+                "conditions": {
+                  "private": true,
+                  "sensitivity_retained": true,
+                  "external": true,
+                  "feasible": true,
+                  "bound": true,
+                  "unauthorized": true,
+                  "traceable": true
+                },
+                "authorization": {
+                  "actor": "worker",
+                  "resource": "demo",
+                  "action": "send",
+                  "purpose": "preview",
+                  "invocation": "b",
+                  "source": "/scs/operations/0/arg0",
+                  "allowed": false,
+                  "reference": "decision"
+                },
+                "unknown": [],
+                "evidence": [
+                  {
+                    "group": "nodes",
+                    "id": "/scs/operations/0/arg0",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(2)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(2)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "group": "edges",
+                    "id": "/edges/4",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(2)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(2)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  {
+                    "group": "nodes",
+                    "id": "/scs/operations/0",
+                    "witnesses": [
+                      {
+                        "path": "main.py",
+                        "namespace": "skill",
+                        "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+                        "source": "python_ast",
+                        "start_line": 3,
+                        "end_line": 3,
+                        "snippet": "send(2)",
+                        "ast": {
+                          "node_type": "Call",
+                          "source": "send(2)",
+                          "start_utf8_column": 0,
+                          "end_utf8_column": 7
+                        },
+                        "confidence": 1.0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "candidates": [],
+            "excluded": [],
+            "graph_gaps": [
+              {
+                "subject": "/scs/operations/0",
+                "reason": "tool_binding_unresolved",
+                "evidence": "/scs/operations/0"
+              },
+              {
+                "subject": "skill",
+                "reason": "uninterpreted_instruction",
+                "evidence": "/scs/diagnostics/0"
+              },
+              {
+                "subject": "skill",
+                "reason": "runtime_semantics_unresolved",
+                "evidence": "/scs/diagnostics/1"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_ports",
+                "evidence": "/scs/diagnostics/2"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_effects",
+                "evidence": "/scs/diagnostics/3"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_context_exposure",
+                "evidence": "/scs/diagnostics/4"
+              },
+              {
+                "subject": "skill",
+                "reason": "no_claim_trust_boundaries",
+                "evidence": "/scs/diagnostics/5"
+              }
+            ],
+            "reasons": [],
+            "lower": true,
+            "upper": true,
+            "state": "violation"
+          }
+        ]
+      }
+    ],
+    "alignment": {
+      "before": [
+        "/scs/operations/0"
+      ],
+      "after": [
+        "/scs/operations/0"
+      ],
+      "identity_basis": "stable_binding",
+      "confidence": "conditional_on_contract",
+      "full": {
+        "state": "unknown"
+      },
+      "security": {
+        "state": "unknown"
+      }
+    },
+    "status": "compared",
+    "overall": "introduced",
+    "possible_labels": [
+      "introduced"
+    ],
+    "identity_certificate": false,
+    "regions": [
+      {
+        "context": [
+          "preview",
+          "a"
+        ],
+        "before": "safe",
+        "after": "safe",
+        "certainty": "unchanged",
+        "regions": {
+          "removed": {
+            "lower": false,
+            "upper": false
+          },
+          "added": {
+            "lower": false,
+            "upper": false
+          },
+          "persistent": {
+            "lower": false,
+            "upper": false
+          },
+          "satisfied": {
+            "lower": true,
+            "upper": true
+          }
+        }
+      },
+      {
+        "context": [
+          "preview",
+          "b"
+        ],
+        "before": "safe",
+        "after": "violation",
+        "certainty": "unchanged",
+        "regions": {
+          "removed": {
+            "lower": false,
+            "upper": false
+          },
+          "added": {
+            "lower": true,
+            "upper": true
+          },
+          "persistent": {
+            "lower": false,
+            "upper": false
+          },
+          "satisfied": {
+            "lower": false,
+            "upper": false
+          }
+        }
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "main.py",
+      "kind": "modified",
+      "structure": [
+        "Module(body=[Assign(targets=[Name(id='a', ctx=Store())], value=Constant(value=1)), Expr(value=Call(func=Name(id='send', ctx=Load()), args=[Constant(value=1)]))])",
+        "Module(body=[Assign(targets=[Name(id='a', ctx=Store())], value=Constant(value=2)), Expr(value=Call(func=Name(id='send', ctx=Load()), args=[Constant(value=2)]))])"
+      ],
+      "hunks": [
+        {
+          "kind": "replace",
+          "before": [
+            1,
+            1
+          ],
+          "after": [
+            1,
+            1
+          ]
+        },
+        {
+          "kind": "replace",
+          "before": [
+            3,
+            3
+          ],
+          "after": [
+            3,
+            3
+          ]
+        }
+      ],
+      "before": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+      "after": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32"
+    }
+  ],
+  "edit_targets": [
+    [
+      {
+        "group": "capabilities",
+        "target": "/scs/operations/0",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(1)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(1)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "nodes",
+        "target": "/scs/operations/0",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(1)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(1)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "nodes",
+        "target": "/scs/operations/0/arg0",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(1)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(1)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "edges",
+        "target": "/edges/2",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(1)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(1)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "edges",
+        "target": "/edges/3",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(1)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(1)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "edges",
+        "target": "/edges/4",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(1)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(1)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      }
+    ],
+    [
+      {
+        "group": "capabilities",
+        "target": "/scs/operations/0",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(2)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(2)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "nodes",
+        "target": "/scs/operations/0",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(2)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(2)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "nodes",
+        "target": "/scs/operations/0/arg0",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(2)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(2)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "edges",
+        "target": "/edges/2",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(2)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(2)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "edges",
+        "target": "/edges/3",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(2)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(2)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      },
+      {
+        "group": "edges",
+        "target": "/edges/4",
+        "locations": [
+          {
+            "path": "main.py",
+            "hunk": 1,
+            "matched_lines": [
+              3,
+              3
+            ],
+            "origin": "/scs/operations/0",
+            "witness": {
+              "path": "main.py",
+              "namespace": "skill",
+              "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+              "source": "python_ast",
+              "start_line": 3,
+              "end_line": 3,
+              "snippet": "send(2)",
+              "ast": {
+                "node_type": "Call",
+                "source": "send(2)",
+                "start_utf8_column": 0,
+                "end_utf8_column": 7
+              },
+              "confidence": 1.0
+            }
+          }
+        ]
+      }
+    ]
+  ],
+  "associations": [
+    {
+      "context": [
+        "preview",
+        "b"
+      ],
+      "direction": "added",
+      "certainty": "definite",
+      "paths": [
+        {
+          "side": "before",
+          "bucket": "excluded",
+          "targets": [
+            [
+              "nodes",
+              "/scs/operations/0/arg0"
+            ],
+            [
+              "edges",
+              "/edges/4"
+            ],
+            [
+              "nodes",
+              "/scs/operations/0"
+            ]
+          ],
+          "edges": [
+            {
+              "source": "/scs/operations/0/arg0",
+              "relation": "operand",
+              "target": "/scs/operations/0",
+              "certainty": "static",
+              "evidence": [
+                "/scs/operations/0/parameters/0",
+                "/scs/operations/0"
+              ]
+            }
+          ],
+          "locations": [
+            {
+              "group": "nodes",
+              "target": "/scs/operations/0/arg0",
+              "edits": [
+                {
+                  "path": "main.py",
+                  "hunk": 1,
+                  "matched_lines": [
+                    3,
+                    3
+                  ],
+                  "origin": "/scs/operations/0",
+                  "witness": {
+                    "path": "main.py",
+                    "namespace": "skill",
+                    "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+                    "source": "python_ast",
+                    "start_line": 3,
+                    "end_line": 3,
+                    "snippet": "send(1)",
+                    "ast": {
+                      "node_type": "Call",
+                      "source": "send(1)",
+                      "start_utf8_column": 0,
+                      "end_utf8_column": 7
+                    },
+                    "confidence": 1.0
+                  }
+                }
+              ]
+            },
+            {
+              "group": "edges",
+              "target": "/edges/4",
+              "edits": [
+                {
+                  "path": "main.py",
+                  "hunk": 1,
+                  "matched_lines": [
+                    3,
+                    3
+                  ],
+                  "origin": "/scs/operations/0",
+                  "witness": {
+                    "path": "main.py",
+                    "namespace": "skill",
+                    "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+                    "source": "python_ast",
+                    "start_line": 3,
+                    "end_line": 3,
+                    "snippet": "send(1)",
+                    "ast": {
+                      "node_type": "Call",
+                      "source": "send(1)",
+                      "start_utf8_column": 0,
+                      "end_utf8_column": 7
+                    },
+                    "confidence": 1.0
+                  }
+                }
+              ]
+            },
+            {
+              "group": "nodes",
+              "target": "/scs/operations/0",
+              "edits": [
+                {
+                  "path": "main.py",
+                  "hunk": 1,
+                  "matched_lines": [
+                    3,
+                    3
+                  ],
+                  "origin": "/scs/operations/0",
+                  "witness": {
+                    "path": "main.py",
+                    "namespace": "skill",
+                    "sha256": "9153cdc904e48f6ed26ee7bed47a8eba976e34fd40d144cfa60551fb6fa23626",
+                    "source": "python_ast",
+                    "start_line": 3,
+                    "end_line": 3,
+                    "snippet": "send(1)",
+                    "ast": {
+                      "node_type": "Call",
+                      "source": "send(1)",
+                      "start_utf8_column": 0,
+                      "end_utf8_column": 7
+                    },
+                    "confidence": 1.0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "side": "after",
+          "bucket": "witnesses",
+          "targets": [
+            [
+              "nodes",
+              "/scs/operations/0/arg0"
+            ],
+            [
+              "edges",
+              "/edges/4"
+            ],
+            [
+              "nodes",
+              "/scs/operations/0"
+            ]
+          ],
+          "edges": [
+            {
+              "source": "/scs/operations/0/arg0",
+              "relation": "operand",
+              "target": "/scs/operations/0",
+              "certainty": "static",
+              "evidence": [
+                "/scs/operations/0/parameters/0",
+                "/scs/operations/0"
+              ]
+            }
+          ],
+          "locations": [
+            {
+              "group": "nodes",
+              "target": "/scs/operations/0/arg0",
+              "edits": [
+                {
+                  "path": "main.py",
+                  "hunk": 1,
+                  "matched_lines": [
+                    3,
+                    3
+                  ],
+                  "origin": "/scs/operations/0",
+                  "witness": {
+                    "path": "main.py",
+                    "namespace": "skill",
+                    "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+                    "source": "python_ast",
+                    "start_line": 3,
+                    "end_line": 3,
+                    "snippet": "send(2)",
+                    "ast": {
+                      "node_type": "Call",
+                      "source": "send(2)",
+                      "start_utf8_column": 0,
+                      "end_utf8_column": 7
+                    },
+                    "confidence": 1.0
+                  }
+                }
+              ]
+            },
+            {
+              "group": "edges",
+              "target": "/edges/4",
+              "edits": [
+                {
+                  "path": "main.py",
+                  "hunk": 1,
+                  "matched_lines": [
+                    3,
+                    3
+                  ],
+                  "origin": "/scs/operations/0",
+                  "witness": {
+                    "path": "main.py",
+                    "namespace": "skill",
+                    "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+                    "source": "python_ast",
+                    "start_line": 3,
+                    "end_line": 3,
+                    "snippet": "send(2)",
+                    "ast": {
+                      "node_type": "Call",
+                      "source": "send(2)",
+                      "start_utf8_column": 0,
+                      "end_utf8_column": 7
+                    },
+                    "confidence": 1.0
+                  }
+                }
+              ]
+            },
+            {
+              "group": "nodes",
+              "target": "/scs/operations/0",
+              "edits": [
+                {
+                  "path": "main.py",
+                  "hunk": 1,
+                  "matched_lines": [
+                    3,
+                    3
+                  ],
+                  "origin": "/scs/operations/0",
+                  "witness": {
+                    "path": "main.py",
+                    "namespace": "skill",
+                    "sha256": "99164df38702874a903f1f2a583305c4ce6ea839437024cd5fcdba608aa40d32",
+                    "source": "python_ast",
+                    "start_line": 3,
+                    "end_line": 3,
+                    "snippet": "send(2)",
+                    "ast": {
+                      "node_type": "Call",
+                      "source": "send(2)",
+                      "start_utf8_column": 0,
+                      "end_utf8_column": 7
+                    },
+                    "confidence": 1.0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "semantic_dependencies": [
+        {
+          "rule": "aligned_bound_literal_operand",
+          "before": {
+            "callee": "Name(id='send', ctx=Load())",
+            "slot": 0,
+            "value": "Constant(value=1)"
+          },
+          "after": {
+            "callee": "Name(id='send', ctx=Load())",
+            "slot": 0,
+            "value": "Constant(value=2)"
+          },
+          "path_indices": [
+            0,
+            1
+          ]
+        }
+      ],
+      "uncertainty": [
+        "policy facts and authorizations are external contracts"
+      ],
+      "candidate_edits": [
+        {
+          "path": "main.py",
+          "hunk": 1
+        }
+      ],
+      "joint_sufficiency": "unknown"
+    }
+  ],
+  "causal_status": "not_established"
+}

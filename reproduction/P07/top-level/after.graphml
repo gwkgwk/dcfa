@@ -60,7 +60,7 @@
     </node>
     <node id="1667">
       <data key="d0">string</data>
-      <data key="d5">C:/Users/Monkey/AppData/Local/Temp/dcfa-p07-d92d7de/pair3/sample-1.1.0/index.js</data>
+      <data key="d5">sample-1.1.0/index.js</data>
       <data key="d3">ObjTypes.Static</data>
     </node>
     <node id="640">
@@ -237,7 +237,7 @@
     </node>
     <node id="1657">
       <data key="d0">function</data>
-      <data key="d1">C:/Users/Monkey/AppData/Local/Temp/dcfa-p07-d92d7de/pair3/sample-1.1.0/index.js</data>
+      <data key="d1">sample-1.1.0/index.js</data>
       <data key="d3">ObjTypes.Other</data>
       <data key="d5">None</data>
     </node>
@@ -3402,7 +3402,7 @@
     </edge>
     <edge source="26" target="1657" id="564">
       <data key="d10">PARENT_TO_CHILD</data>
-      <data key="d11">C:/Users/Monkey/AppData/Local/Temp/dcfa-p07-d92d7de/pair3/sample-1.1.0/index.js</data>
+      <data key="d11">sample-1.1.0/index.js</data>
       <data key="d12">PARENT_TO_CHILD</data>
       <data key="d13">564</data>
     </edge>

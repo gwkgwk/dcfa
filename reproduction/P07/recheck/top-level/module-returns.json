@@ -1,0 +1,52 @@
+{
+  "before": {
+    "file_node_nums": {},
+    "objects": 572,
+    "edges": 477,
+    "trust_domains": [],
+    "relations": []
+  },
+  "after": {
+    "file_node_nums": {},
+    "objects": 836,
+    "edges": 1377,
+    "trust_domains": [
+      ":dyn:both:Function",
+      ":dyn:eval",
+      ":dyn:require",
+      ":encoding",
+      ":local:demo.txt",
+      ":local:path",
+      ":sys:frontend:document",
+      "path",
+      "process",
+      "process.argv",
+      "process.env"
+    ],
+    "relations": [
+      [
+        [
+          ":local:demo",
+          "path"
+        ],
+        [
+          [
+            "1713",
+            "1762"
+          ],
+          [
+            "1692",
+            "1726",
+            "1762"
+          ]
+        ]
+      ]
+    ]
+  },
+  "flagged_single_local_rels_from_tuples": [
+    [
+      ":local",
+      "path"
+    ]
+  ]
+}

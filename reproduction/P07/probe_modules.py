@@ -4,6 +4,8 @@ import json
 import sys
 from pathlib import Path
 
+from portable_graph import localize_entry
+
 source, pair, output = (Path(arg).resolve() for arg in sys.argv[1:])
 sys.path.insert(0, str(source))
 import rogue_one_runner as runner  # noqa: E402
@@ -14,8 +16,9 @@ record = {}
 for label, version in [("before", "1.0.0"), ("after", "1.1.0")]:
     folder = pair / f"sample-{version}"
     with runner.wd(folder):
-        odg = runner.odgen_main(argv=[(folder / "index.js").as_posix(),
-                                     "-t", "data_flow", "--json", "--run-all"])
+        odg = runner.odgen_main(
+            argv=[(folder / "index.js").as_posix(), "-t", "data_flow", "--json", "--run-all"]
+        )
     graph = runner.ex.extract_idg(odg)
     if not any(str(a.get("name", "")).endswith("index.js") for _, a in odg.graph.nodes(data=True)):
         raise RuntimeError("No source AST")
@@ -25,11 +28,14 @@ for label, version in [("before", "1.0.0"), ("after", "1.1.0")]:
         "file_node_nums": odg.file_node_nums,
         "objects": graph.number_of_nodes(),
         "edges": graph.number_of_edges(),
-        "trust_domains": sorted({a["trust_domain"] for _, a in graph.nodes(data=True)
-                                  if a.get("trust_domain")}),
+        "trust_domains": sorted(
+            {a["trust_domain"] for _, a in graph.nodes(data=True) if a.get("trust_domain")}
+        ),
         "relations": sorted(domains[-1]),
     }
-    runner.td.sanitize_and_export(graph, output / f"{label}.graphml")
+    exported = output / f"{label}.graphml"
+    runner.td.sanitize_and_export(graph, exported)
+    localize_entry(exported, pair, folder / "index.js")
 
 record["flagged_single_local_rels_from_tuples"] = sorted(
     runner.td.flagged_single_local_rels_from_tuples(*domains)

@@ -21,3 +21,22 @@
 冻结标记 rogueone-style-baseline-v1.0.0 指向本报告所在代码提交。使用 git rev-parse rogueone-style-baseline-v1.0.0^{} 获取精确 SHA。代码配置随提交固定：Python AST 直线子集，单一 :local、builtin:file、声明模块域；对象上限 4096，调用深度 24；读取器单文件 32 KiB、总计 256 KiB、最多 256 项、目录深度 12。P09 两侧采用同一根与闭包规则，无额外阈值。Windows，项目 Python 3.14.0a5、pytest 9.2.0，基线运行只使用标准库。切换解释器可能改变标准库名字表。输入是否来自同一 Skill、配置与入口角色仍由调用者保证。
 
 新增 P10 设计、固定输入及人工 oracle、独立测试和本报告。入库冻结的 P08/P09 实现和专项回归此前在工作区中已验证，本轮未更改其行为。没有读取外部评价集。工作区执行 python -m pytest -q tests/unit/test_p10_baseline.py 为 9 passed；全套 python -m pytest -q 为 142 passed，含工作区既有 P07 审查测试；ruff check . 通过。冻结复核针对 P08/P09/P10 专项套件。九项均与独立预期相符，本轮未发现需修复的实现缺陷；冻结用于后续公平比较，停在 P10。
+
+## 独立审查后的干净检出复核
+
+在独立临时目录检出标签，沿用项目虚拟环境，只让 Python 从该检出的 src 加载 DCFA。实际导入目录为 C:/Users/Monkey/AppData/Local/Temp/p10-review-94fd9529-9388-4fa1-b9b0-a8f4a2847ea6/src/dcfa，已分别核对 program_flow.py 与 trust_diff.py。标签树 P10 专项 9 passed，标签树整个 tests 为 129 passed，均退出 0、无失败或跳过。以下 PowerShell 命令从项目根目录执行。
+
+~~~powershell
+$python = (Resolve-Path .venv/Scripts/python.exe).Path
+$exportDir = Join-Path $env:TEMP ('p10-review-' + [guid]::NewGuid())
+git clone -q --local --no-checkout . $exportDir
+git -C $exportDir checkout -q --detach rogueone-style-baseline-v1.0.0
+Push-Location $exportDir
+$env:PYTHONPATH = (Resolve-Path src).Path
+& $python -c "from pathlib import Path; from dcfa import program_flow, trust_diff; print(program_flow.__file__, trust_diff.__file__); assert all(Path(m.__file__).is_relative_to(Path.cwd()/'src') for m in (program_flow, trust_diff))"
+& $python -m pytest -q tests/unit/test_p10_baseline.py
+& $python -m pytest -q tests
+Pop-Location
+~~~
+
+冻结代码包含文件域、跨文件证据、入口不一致门控和读取限额。九例只验证表中列出的性质，上述四项须引用相应前置测试或另行验证。审查后的工作区另有一例接口验证，不能计入标签的九例；工作区修前 142 项，修后 143 项。事前 oracle 和冻结提交的先后可从 Git 核实；提交历史不能独立证明此前没有任何本地运行。[逐项修复与反例记录](../reviews/P10_review_response.md)

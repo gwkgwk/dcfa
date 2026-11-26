@@ -1,0 +1,38 @@
+{
+  "status": "pending_independent_review",
+  "algorithm": "DCFA-P16-finite-v1",
+  "python": "3.14.0a5 (tags/v3.14.0a5:3ae9101, Feb 11 2025, 17:36:54) [MSC v.1942 64 bit (AMD64)]",
+  "dependencies": {
+    "dcfa": "0.1.0",
+    "fastjsonschema": "2.22.3",
+    "PyYAML": "6.0.4",
+    "pytest": "9.2.0",
+    "ruff": "0.17.6"
+  },
+  "configuration": "P16.synthetic.v1",
+  "config_sha256": "e3e9b80754b90aa3c31f23521ef27530e538305a98fa2f5d844b46abcfcf10ad",
+  "model": null,
+  "prompt": null,
+  "external_evaluation": "not_run",
+  "sha256": {
+    "src/dcfa/__init__.py": "390c5c223bd017703728817bffb1cd46b23b6765a865a4313b3464006ff0c3e2",
+    "src/dcfa/update.py": "f55a3f44f061ab57719861c0792d59c5929a868bfb823a8cf7e35e47ba6cd82f",
+    "src/dcfa/scs.py": "1f7581a9fec151f4992fe6db060f3e67cd94efecbb3e7e507b7d410c43389991",
+    "src/dcfa/scs.schema.json": "84ca85438f375988fc15a7c13c8c29eb9499b823984dca051b4b2e346602dd95",
+    "src/dcfa/skill_reader.py": "9a2e02d049b376fe1695be5f9f43d8d24d4efb4ffeafed9bbc1fbe776fc7eb4d",
+    "src/dcfa/windows_streams.py": "838b450e0ca8940a58a4a373de045962a2d1acfb115948238a4c828f1488eb75",
+    "src/dcfa/graph.py": "de99fd8db3753e464e07a05ca6f5e36811c6df601e42fed4844513412fab5ce9",
+    "src/dcfa/evidence.py": "f67e583cb4ee7012de8a21a6728111aefb6215bfd689371313931a2a0c2bbb8a",
+    "src/dcfa/alignment.py": "4b6f20ef23d5541949a1a04ee389b1b6e379bf0d05b3c4c91ec0a5d61bc36100",
+    "src/dcfa/policy.py": "6f12897952e917bf4b4a60511ca2a362dabcea27fa9bfcf61079760bd18d6024",
+    "src/dcfa/policy_diff.py": "b880f88e353be2e0c0df3ac5f893df37542dfa2fe4f275dca6ae60d873cf46d4",
+    "src/dcfa/attribution.py": "38f510f81e3b7435ed706d374da1cf8eed145d819ef4f64df58345f1dbb338f2",
+    "docs/algorithm_spec.md": "1b5ee472d14c5deeb1331e9f6c3f741a238ab5985632715628f0eb762b10142f",
+    "docs/threat_model.md": "114648c892853d0791a743bce26ffa5c57d2591cef961a53468c443432ee9636",
+    "docs/P16-design.md": "6fa35d967f8abc3a46920c0da517d933b41ab50a39ba6a01e9d17d555b960606",
+    "docs/P16-example-config.json": "b538245f4e330cf5597dec7c17c6ec2eb2bcf5074a537ab72939c11931e8057f",
+    "docs/P16-analysis.json": "6038531eb7169aff81e008dde4a70b87bcccfc57930f7fc0b56135a5351ac29c",
+    "tests/unit/test_update.py": "e4f3181bd16d9a48602eed9fc35f21231eb3f64e070a71b110542009d41b33e9",
+    "pyproject.toml": "23e0da6ea8f796c5fa68c1ed21a5589e08e3fede39bb154329e4436f64b76c91"
+  }
+}

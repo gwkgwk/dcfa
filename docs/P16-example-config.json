@@ -1,0 +1,455 @@
+{
+  "configuration": "P16.synthetic.v1",
+  "queries": [
+    {
+      "id": "operand",
+      "key": [
+        "confidentiality",
+        "worker",
+        "operand",
+        "send"
+      ],
+      "contexts": [
+        [
+          "preview",
+          "a"
+        ],
+        [
+          "preview",
+          "b"
+        ]
+      ],
+      "before": {
+        "members": [
+          "/scs/operations/1"
+        ],
+        "contracts": [
+          {
+            "actor": "worker",
+            "resource": "operand",
+            "action": "send",
+            "purpose": "preview",
+            "invocation": "a",
+            "policy": "confidentiality",
+            "graph_sha256": "fd2c1f29f8d34a9b5c6a9eef325909fa57312c688b1fc0e479e163e62c8628bd",
+            "reference": "fixture environment",
+            "coverage_certificate": "finite domain",
+            "prefixes": [
+              {
+                "reference": "fixture payload binding",
+                "source": "/scs/operations/1/arg0",
+                "effect": "/scs/operations/1",
+                "edges": [
+                  9
+                ],
+                "bound": true,
+                "feasible": true,
+                "private": true,
+                "external": true,
+                "sensitivity_retained": true
+              }
+            ],
+            "authorizations": [
+              {
+                "actor": "worker",
+                "resource": "operand",
+                "action": "send",
+                "purpose": "preview",
+                "invocation": "a",
+                "source": "/scs/operations/1/arg0",
+                "allowed": false,
+                "reference": "fixture decision"
+              }
+            ]
+          },
+          {
+            "actor": "worker",
+            "resource": "operand",
+            "action": "send",
+            "purpose": "preview",
+            "invocation": "b",
+            "policy": "confidentiality",
+            "graph_sha256": "fd2c1f29f8d34a9b5c6a9eef325909fa57312c688b1fc0e479e163e62c8628bd",
+            "reference": "fixture environment",
+            "coverage_certificate": "finite domain",
+            "prefixes": [
+              {
+                "reference": "fixture payload binding",
+                "source": "/scs/operations/1/arg0",
+                "effect": "/scs/operations/1",
+                "edges": [
+                  9
+                ],
+                "bound": true,
+                "feasible": true,
+                "private": true,
+                "external": true,
+                "sensitivity_retained": true
+              }
+            ],
+            "authorizations": [
+              {
+                "actor": "worker",
+                "resource": "operand",
+                "action": "send",
+                "purpose": "preview",
+                "invocation": "b",
+                "source": "/scs/operations/1/arg0",
+                "allowed": true,
+                "reference": "fixture decision"
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "members": [
+          "/scs/operations/1"
+        ],
+        "contracts": [
+          {
+            "actor": "worker",
+            "resource": "operand",
+            "action": "send",
+            "purpose": "preview",
+            "invocation": "a",
+            "policy": "confidentiality",
+            "graph_sha256": "50a3b9683f0440b4b807c467c0b3d4174c0ab7e2aecad1b5b77d1ae4f9944ec4",
+            "reference": "fixture environment",
+            "coverage_certificate": "finite domain",
+            "prefixes": [
+              {
+                "reference": "fixture payload binding",
+                "source": "/scs/operations/1/arg0",
+                "effect": "/scs/operations/1",
+                "edges": [
+                  9
+                ],
+                "bound": true,
+                "feasible": true,
+                "private": true,
+                "external": true,
+                "sensitivity_retained": true
+              }
+            ],
+            "authorizations": [
+              {
+                "actor": "worker",
+                "resource": "operand",
+                "action": "send",
+                "purpose": "preview",
+                "invocation": "a",
+                "source": "/scs/operations/1/arg0",
+                "allowed": false,
+                "reference": "fixture decision"
+              }
+            ]
+          },
+          {
+            "actor": "worker",
+            "resource": "operand",
+            "action": "send",
+            "purpose": "preview",
+            "invocation": "b",
+            "policy": "confidentiality",
+            "graph_sha256": "50a3b9683f0440b4b807c467c0b3d4174c0ab7e2aecad1b5b77d1ae4f9944ec4",
+            "reference": "fixture environment",
+            "coverage_certificate": "finite domain",
+            "prefixes": [
+              {
+                "reference": "fixture payload binding",
+                "source": "/scs/operations/1/arg0",
+                "effect": "/scs/operations/1",
+                "edges": [
+                  9
+                ],
+                "bound": true,
+                "feasible": true,
+                "private": true,
+                "external": true,
+                "sensitivity_retained": true
+              }
+            ],
+            "authorizations": [
+              {
+                "actor": "worker",
+                "resource": "operand",
+                "action": "send",
+                "purpose": "preview",
+                "invocation": "b",
+                "source": "/scs/operations/1/arg0",
+                "allowed": false,
+                "reference": "fixture decision"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "may_cause",
+      "key": [
+        "confidentiality",
+        "worker",
+        "may_cause",
+        "send"
+      ],
+      "contexts": [
+        [
+          "preview",
+          "a"
+        ],
+        [
+          "preview",
+          "b"
+        ]
+      ],
+      "before": {
+        "members": [
+          "/scs/effects/0"
+        ],
+        "contracts": [
+          {
+            "actor": "worker",
+            "resource": "may_cause",
+            "action": "send",
+            "purpose": "preview",
+            "invocation": "a",
+            "policy": "confidentiality",
+            "graph_sha256": "fd2c1f29f8d34a9b5c6a9eef325909fa57312c688b1fc0e479e163e62c8628bd",
+            "reference": "fixture environment",
+            "coverage_certificate": "finite domain",
+            "prefixes": [
+              {
+                "reference": "fixture payload binding",
+                "source": "/scs/operations/0",
+                "effect": "/scs/effects/0",
+                "edges": [
+                  13
+                ],
+                "bound": true,
+                "feasible": true,
+                "private": true,
+                "external": true,
+                "sensitivity_retained": true
+              }
+            ],
+            "authorizations": [
+              {
+                "actor": "worker",
+                "resource": "may_cause",
+                "action": "send",
+                "purpose": "preview",
+                "invocation": "a",
+                "source": "/scs/operations/0",
+                "allowed": false,
+                "reference": "fixture decision"
+              }
+            ]
+          },
+          {
+            "actor": "worker",
+            "resource": "may_cause",
+            "action": "send",
+            "purpose": "preview",
+            "invocation": "b",
+            "policy": "confidentiality",
+            "graph_sha256": "fd2c1f29f8d34a9b5c6a9eef325909fa57312c688b1fc0e479e163e62c8628bd",
+            "reference": "fixture environment",
+            "coverage_certificate": "finite domain",
+            "prefixes": [
+              {
+                "reference": "fixture payload binding",
+                "source": "/scs/operations/0",
+                "effect": "/scs/effects/0",
+                "edges": [
+                  13
+                ],
+                "bound": true,
+                "feasible": true,
+                "private": true,
+                "external": true,
+                "sensitivity_retained": true
+              }
+            ],
+            "authorizations": [
+              {
+                "actor": "worker",
+                "resource": "may_cause",
+                "action": "send",
+                "purpose": "preview",
+                "invocation": "b",
+                "source": "/scs/operations/0",
+                "allowed": true,
+                "reference": "fixture decision"
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "members": [
+          "/scs/effects/0"
+        ],
+        "contracts": [
+          {
+            "actor": "worker",
+            "resource": "may_cause",
+            "action": "send",
+            "purpose": "preview",
+            "invocation": "a",
+            "policy": "confidentiality",
+            "graph_sha256": "50a3b9683f0440b4b807c467c0b3d4174c0ab7e2aecad1b5b77d1ae4f9944ec4",
+            "reference": "fixture environment",
+            "coverage_certificate": "finite domain",
+            "prefixes": [
+              {
+                "reference": "fixture payload binding",
+                "source": "/scs/operations/0",
+                "effect": "/scs/effects/0",
+                "edges": [
+                  13
+                ],
+                "bound": true,
+                "feasible": true,
+                "private": true,
+                "external": true,
+                "sensitivity_retained": true
+              }
+            ],
+            "authorizations": [
+              {
+                "actor": "worker",
+                "resource": "may_cause",
+                "action": "send",
+                "purpose": "preview",
+                "invocation": "a",
+                "source": "/scs/operations/0",
+                "allowed": false,
+                "reference": "fixture decision"
+              }
+            ]
+          },
+          {
+            "actor": "worker",
+            "resource": "may_cause",
+            "action": "send",
+            "purpose": "preview",
+            "invocation": "b",
+            "policy": "confidentiality",
+            "graph_sha256": "50a3b9683f0440b4b807c467c0b3d4174c0ab7e2aecad1b5b77d1ae4f9944ec4",
+            "reference": "fixture environment",
+            "coverage_certificate": "finite domain",
+            "prefixes": [
+              {
+                "reference": "fixture payload binding",
+                "source": "/scs/operations/0",
+                "effect": "/scs/effects/0",
+                "edges": [
+                  13
+                ],
+                "bound": true,
+                "feasible": true,
+                "private": true,
+                "external": true,
+                "sensitivity_retained": true
+              }
+            ],
+            "authorizations": [
+              {
+                "actor": "worker",
+                "resource": "may_cause",
+                "action": "send",
+                "purpose": "preview",
+                "invocation": "b",
+                "source": "/scs/operations/0",
+                "allowed": false,
+                "reference": "fixture decision"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "before": {
+    "contract": {
+      "graph_sha256": "fd2c1f29f8d34a9b5c6a9eef325909fa57312c688b1fc0e479e163e62c8628bd",
+      "skill": "synthetic",
+      "version": "before",
+      "environment": "fixed",
+      "scope": "finite events",
+      "units": [
+        {
+          "members": [
+            "/scs/operations/1"
+          ],
+          "anchor": "operand",
+          "certificate": "fixed interface",
+          "role": [
+            "worker",
+            "send",
+            "text",
+            "operand",
+            "publish"
+          ]
+        },
+        {
+          "members": [
+            "/scs/effects/0"
+          ],
+          "anchor": "may_cause",
+          "certificate": "fixed interface",
+          "role": [
+            "worker",
+            "send",
+            "text",
+            "may_cause",
+            "publish"
+          ]
+        }
+      ],
+      "coverage_certificate": "inventory"
+    }
+  },
+  "after": {
+    "contract": {
+      "graph_sha256": "50a3b9683f0440b4b807c467c0b3d4174c0ab7e2aecad1b5b77d1ae4f9944ec4",
+      "skill": "synthetic",
+      "version": "after",
+      "environment": "fixed",
+      "scope": "finite events",
+      "units": [
+        {
+          "members": [
+            "/scs/operations/1"
+          ],
+          "anchor": "operand",
+          "certificate": "fixed interface",
+          "role": [
+            "worker",
+            "send",
+            "text",
+            "operand",
+            "publish"
+          ]
+        },
+        {
+          "members": [
+            "/scs/effects/0"
+          ],
+          "anchor": "may_cause",
+          "certificate": "fixed interface",
+          "role": [
+            "worker",
+            "send",
+            "text",
+            "may_cause",
+            "publish"
+          ]
+        }
+      ],
+      "coverage_certificate": "inventory"
+    }
+  }
+}

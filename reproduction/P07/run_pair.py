@@ -2,21 +2,24 @@
 
 import json
 import sys
-from argparse import Namespace
+from argparse import ArgumentParser, Namespace
 from pathlib import Path
 
-source, pair = (Path(arg).resolve() for arg in sys.argv[1:])
+parser = ArgumentParser(description=__doc__)
+parser.add_argument("source", type=Path)
+parser.add_argument("pair", type=Path)
+parser.add_argument("--case", choices=("top-level", "function-body"), default="top-level")
+args = parser.parse_args()
+source, pair = args.source.resolve(), args.pair.resolve()
+inputs = Path(__file__).resolve().parent / "inputs" / args.case
 pair.mkdir(parents=True, exist_ok=False)
 folders = []
-for version, code in [
-    ("1.0.0", "module.exports = 'demo.txt';"),
-    ("1.1.0", "const path = require('path');\nmodule.exports = path.basename('demo.txt');"),
-]:
+for version in ("1.0.0", "1.1.0"):
     folder = pair / f"sample-{version}"
     folder.mkdir()
     manifest = {"name": "sample", "version": version, "main": "index.js"}
     (folder / "package.json").write_text(json.dumps(manifest), encoding="utf-8")
-    (folder / "index.js").write_text(code + "\n", encoding="utf-8")
+    (folder / "index.js").write_bytes((inputs / f"{version}.js").read_bytes())
     folders.append(folder)
 
 sys.path.insert(0, str(source))
